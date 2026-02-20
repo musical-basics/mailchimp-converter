@@ -124,35 +124,135 @@ Return ONLY the complete HTML email code. No markdown, no explanations, just the
 }
 
 /**
- * Main pipeline: Parse → Analyze (Gemini) → Generate (Claude)
+ * Use Gemini for full generation (analyze + generate in one shot)
+ */
+async function generateFullWithGemini(
+    parsed: ParsedEmail,
+    assetFilenames: string[]
+): Promise<string> {
+    const contentSummary = generateContentSummary(parsed);
+    const response = await getGemini().models.generateContent({
+        model: "gemini-2.5-pro",
+        contents: [{
+            role: "user",
+            parts: [{
+                text: `You are an expert HTML email developer. Convert this Mailchimp email into a clean, portable HTML email.
+
+## Source Email Content:
+${contentSummary}
+
+## Available Image Assets:
+${assetFilenames.map((f) => `- /api/assets/${f}`).join("\n")}
+
+## Original HTML (first 4000 chars):
+\`\`\`html
+${parsed.rawHtml.substring(0, 4000)}
+\`\`\`
+
+## REQUIREMENTS:
+1. Use TABLE-based layout for email client compatibility
+2. ALL styles must be INLINE
+3. Max content width: 660px, centered
+4. Images use /api/assets/ paths
+5. Include proper email DOCTYPE and meta tags
+6. Support dark mode with meta color-scheme
+7. Include MSO conditionals for Outlook
+8. Buttons use VML for Outlook + standard for others
+9. Preserve ALL original links and CTAs
+10. Match the original layout closely
+11. Include {{unsubscribe_url}} and {{view_in_browser_url}} placeholders
+
+Return ONLY the complete HTML email code starting with <!DOCTYPE html>.`,
+            }],
+        }],
+    });
+    return response?.text ?? "";
+}
+
+/**
+ * Use Claude for full generation (analyze + generate in one shot)
+ */
+async function generateFullWithClaude(
+    parsed: ParsedEmail,
+    assetFilenames: string[]
+): Promise<string> {
+    const contentSummary = generateContentSummary(parsed);
+    const response = await getAnthropic().messages.create({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 8192,
+        messages: [{
+            role: "user",
+            content: `You are an expert HTML email developer. Convert this Mailchimp email into a clean, portable HTML email.
+
+## Source Email Content:
+${contentSummary}
+
+## Available Image Assets:
+${assetFilenames.map((f) => `- /api/assets/${f}`).join("\n")}
+
+## Original HTML (first 4000 chars):
+\`\`\`html
+${parsed.rawHtml.substring(0, 4000)}
+\`\`\`
+
+## REQUIREMENTS:
+1. Use TABLE-based layout for email client compatibility
+2. ALL styles must be INLINE
+3. Max content width: 660px, centered
+4. Images use /api/assets/ paths
+5. Include proper email DOCTYPE and meta tags
+6. Support dark mode with meta color-scheme
+7. Include MSO conditionals for Outlook
+8. Buttons use VML for Outlook + standard for others
+9. Preserve ALL original links and CTAs
+10. Match the original layout closely
+11. Include {{unsubscribe_url}} and {{view_in_browser_url}} placeholders
+
+Return ONLY the complete HTML email code starting with <!DOCTYPE html>.`,
+        }],
+    });
+    const textBlock = response.content.find((b: { type: string }) => b.type === "text") as { type: string; text: string } | undefined;
+    return textBlock?.text ?? "";
+}
+
+/**
+ * Main pipeline: Parse → Generate with selected model(s)
  */
 export async function convertMailchimpToEmail(
     html: string,
-    assetFilenames: string[]
+    assetFilenames: string[],
+    model: "both" | "gemini" | "claude" = "both"
 ): Promise<{ generatedHtml: string; contentMap: string }> {
-    // Import parser
     const { parseMailchimpHtml } = await import("../parsers/mailchimp-parser");
     const parsed = parseMailchimpHtml(html);
 
-    // Step 1: Analyze with Gemini
-    const contentMapRaw = await analyzeWithGemini(parsed, assetFilenames);
+    let rawOutput: string;
+    let contentMap = "";
 
-    // Extract JSON from potential markdown code blocks
-    let contentMap = contentMapRaw;
-    const jsonMatch = contentMapRaw.match(/```(?:json)?\s*([\s\S]*?)```/);
-    if (jsonMatch) {
-        contentMap = jsonMatch[1].trim();
+    if (model === "gemini") {
+        // Gemini only — single-shot
+        rawOutput = await generateFullWithGemini(parsed, assetFilenames);
+    } else if (model === "claude") {
+        // Claude only — single-shot
+        rawOutput = await generateFullWithClaude(parsed, assetFilenames);
+    } else {
+        // Both — Gemini analyzes, Claude generates
+        const contentMapRaw = await analyzeWithGemini(parsed, assetFilenames);
+        contentMap = contentMapRaw;
+        const jsonMatch = contentMapRaw.match(/```(?:json)?\s*([\s\S]*?)```/);
+        if (jsonMatch) {
+            contentMap = jsonMatch[1].trim();
+        }
+        rawOutput = await generateWithClaude(contentMap, html, assetFilenames);
     }
 
-    // Step 2: Generate with Claude
-    const generatedHtml = await generateWithClaude(contentMap, html, assetFilenames);
-
-    // Clean up any markdown wrapping from Claude's response
-    let cleanHtml = generatedHtml;
-    const htmlMatch = generatedHtml.match(/```(?:html)?\s*([\s\S]*?)```/);
+    // Clean up markdown wrapping
+    let cleanHtml = rawOutput;
+    const htmlMatch = rawOutput.match(/```(?:html)?\s*([\s\S]*?)```/);
     if (htmlMatch) {
         cleanHtml = htmlMatch[1].trim();
     }
 
     return { generatedHtml: cleanHtml, contentMap };
 }
+

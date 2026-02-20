@@ -111,6 +111,7 @@ export async function convertEmail(formData: FormData): Promise<{
         }
 
         const htmlContent = await htmlFile.text();
+        const aiModel = (formData.get("aiModel") as string) || "both";
 
         // Get asset filenames from form data
         const assetFilenames: string[] = [];
@@ -123,7 +124,8 @@ export async function convertEmail(formData: FormData): Promise<{
         // Run the AI conversion pipeline
         const { generatedHtml, contentMap } = await convertMailchimpToEmail(
             htmlContent,
-            assetFilenames
+            assetFilenames,
+            aiModel as "both" | "gemini" | "claude"
         );
 
         // Save to Supabase (gracefully skip if not configured)
