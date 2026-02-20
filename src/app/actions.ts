@@ -4,6 +4,36 @@ import { getSupabaseClient, MailchimpTemplate } from "@/lib/supabase";
 import { convertMailchimpToEmail } from "@/lib/ai/email-generator";
 import { parseMailchimpHtml, generateContentSummary } from "@/lib/parsers/mailchimp-parser";
 import { revalidatePath } from "next/cache";
+import { readdir } from "fs/promises";
+import path from "path";
+
+// ─── Image Library Scanner ────────────────────────────────
+
+async function getLibraryImages(): Promise<string[]> {
+    const samplesDir = path.join(process.cwd(), "samples");
+    try {
+        return await collectImageFiles(samplesDir);
+    } catch {
+        return [];
+    }
+}
+
+async function collectImageFiles(dir: string): Promise<string[]> {
+    const entries = await readdir(dir, { withFileTypes: true });
+    const images: string[] = [];
+    for (const entry of entries) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            images.push(...(await collectImageFiles(full)));
+        } else {
+            const ext = path.extname(entry.name).toLowerCase();
+            if ([".png", ".jpg", ".jpeg", ".gif"].includes(ext)) {
+                images.push(entry.name);
+            }
+        }
+    }
+    return images;
+}
 
 // ─── Template CRUD ────────────────────────────────────────
 
@@ -111,21 +141,29 @@ export async function convertEmail(formData: FormData): Promise<{
         }
 
         const htmlContent = await htmlFile.text();
-        const aiModel = (formData.get("aiModel") as string) || "both";
+        const aiMode = (formData.get("aiMode") as string) || "both";
+        const geminiModel = (formData.get("geminiModel") as string) || "";
+        const claudeModel = (formData.get("claudeModel") as string) || "";
 
         // Get asset filenames from form data
-        const assetFilenames: string[] = [];
+        const uploadedAssets: string[] = [];
         for (const [key, value] of formData.entries()) {
             if (key.startsWith("asset_") && value instanceof File) {
-                assetFilenames.push(value.name);
+                uploadedAssets.push(value.name);
             }
         }
+
+        // Auto-scan image library and merge with uploaded assets
+        const libraryImages = await getLibraryImages();
+        const allAssets = [...new Set([...uploadedAssets, ...libraryImages])];
 
         // Run the AI conversion pipeline
         const { generatedHtml, contentMap } = await convertMailchimpToEmail(
             htmlContent,
-            assetFilenames,
-            aiModel as "both" | "gemini" | "claude"
+            allAssets,
+            aiMode as "both" | "gemini" | "claude",
+            geminiModel,
+            claudeModel
         );
 
         // Save to Supabase (gracefully skip if not configured)
@@ -135,7 +173,7 @@ export async function convertEmail(formData: FormData): Promise<{
                 name: templateName,
                 source_html: htmlContent,
                 generated_html: generatedHtml,
-                assets: assetFilenames.map((f) => ({ filename: f, url: `/api/assets/${f}`, slot: "" })),
+                assets: allAssets.map((f: string) => ({ filename: f, url: `/api/assets/${f}`, slot: "" })),
                 status: "completed",
             });
             templateId = template?.id;

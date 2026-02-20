@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import {
     Upload,
     FileText,
@@ -16,17 +16,18 @@ import {
     AlertCircle,
     X,
     Cpu,
+    ChevronDown,
 } from "lucide-react";
 import { convertEmail, analyzeEmail } from "../actions";
 
 type ViewMode = "source" | "preview" | "code";
-type AiModel = "both" | "gemini" | "claude";
+type AiMode = "both" | "gemini" | "claude";
 
-const AI_MODELS: { key: AiModel; label: string; description: string }[] = [
-    { key: "both", label: "Gemini + Claude", description: "Gemini analyzes, Claude generates" },
-    { key: "gemini", label: "Gemini Only", description: "Gemini 2.5 Pro for everything" },
-    { key: "claude", label: "Claude Only", description: "Claude Sonnet 4 for everything" },
-];
+interface ModelInfo {
+    id: string;
+    name: string;
+    provider: "gemini" | "anthropic";
+}
 
 interface AnalysisResult {
     title: string;
@@ -49,9 +50,38 @@ export default function MigratePage() {
     const [viewMode, setViewMode] = useState<ViewMode>("preview");
     const [error, setError] = useState<string | null>(null);
     const [saved, setSaved] = useState(false);
-    const [aiModel, setAiModel] = useState<AiModel>("both");
+    const [aiMode, setAiMode] = useState<AiMode>("both");
+    const [availableModels, setAvailableModels] = useState<ModelInfo[]>([]);
+    const [selectedGeminiModel, setSelectedGeminiModel] = useState("");
+    const [selectedClaudeModel, setSelectedClaudeModel] = useState("");
+    const [loadingModels, setLoadingModels] = useState(true);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const assetInputRef = useRef<HTMLInputElement>(null);
+
+    // Fetch available models on mount
+    useEffect(() => {
+        async function fetchModels() {
+            try {
+                const res = await fetch("/api/models");
+                const data = await res.json();
+                const models: ModelInfo[] = data.models || [];
+                setAvailableModels(models);
+                // Auto-select first of each provider
+                const firstGemini = models.find((m: ModelInfo) => m.provider === "gemini");
+                const firstClaude = models.find((m: ModelInfo) => m.provider === "anthropic");
+                if (firstGemini) setSelectedGeminiModel(firstGemini.id);
+                if (firstClaude) setSelectedClaudeModel(firstClaude.id);
+            } catch {
+                console.error("Failed to fetch models");
+            } finally {
+                setLoadingModels(false);
+            }
+        }
+        fetchModels();
+    }, []);
+
+    const geminiModels = availableModels.filter((m) => m.provider === "gemini");
+    const claudeModels = availableModels.filter((m) => m.provider === "anthropic");
 
     const handleDragOver = useCallback((e: React.DragEvent) => {
         e.preventDefault();
@@ -126,7 +156,9 @@ export default function MigratePage() {
             const formData = new FormData();
             formData.append("htmlFile", htmlFile);
             formData.append("templateName", templateName || "Untitled Template");
-            formData.append("aiModel", aiModel);
+            formData.append("aiMode", aiMode);
+            formData.append("geminiModel", selectedGeminiModel);
+            formData.append("claudeModel", selectedClaudeModel);
             assetFiles.forEach((f, i) => formData.append(`asset_${i}`, f));
 
             const result = await convertEmail(formData);
@@ -307,32 +339,79 @@ export default function MigratePage() {
                             <div className="flex items-center gap-2 mb-3">
                                 <Cpu className="w-4 h-4 text-[var(--primary)]" />
                                 <label className="text-sm font-semibold text-[var(--foreground)]">
-                                    AI Model
+                                    AI Pipeline
                                 </label>
                             </div>
-                            <div className="space-y-2">
-                                {AI_MODELS.map((model) => (
+
+                            {/* Mode selector */}
+                            <div className="flex gap-1 p-1 rounded-lg bg-[var(--background)] mb-4">
+                                {(["both", "gemini", "claude"] as const).map((mode) => (
                                     <button
-                                        key={model.key}
-                                        onClick={() => setAiModel(model.key)}
-                                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all duration-200
-                                            ${aiModel === model.key
-                                                ? "bg-[var(--primary)]/10 border border-[var(--primary)]/40 text-[var(--foreground)]"
-                                                : "bg-[var(--background)] border border-transparent text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)]"}`}
+                                        key={mode}
+                                        onClick={() => setAiMode(mode)}
+                                        className={`flex-1 px-3 py-1.5 rounded-md text-xs font-medium transition-colors
+                                            ${aiMode === mode
+                                                ? "bg-[var(--primary)] text-white"
+                                                : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
                                     >
-                                        <div className={`w-3 h-3 rounded-full border-2 flex items-center justify-center shrink-0
-                                            ${aiModel === model.key ? "border-[var(--primary)]" : "border-[var(--muted)]"}`}>
-                                            {aiModel === model.key && (
-                                                <div className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
-                                            )}
-                                        </div>
-                                        <div>
-                                            <p className="text-sm font-medium">{model.label}</p>
-                                            <p className="text-[10px] text-[var(--muted)]">{model.description}</p>
-                                        </div>
+                                        {mode === "both" ? "Both" : mode === "gemini" ? "Gemini" : "Claude"}
                                     </button>
                                 ))}
                             </div>
+
+                            {/* Gemini model dropdown */}
+                            {(aiMode === "both" || aiMode === "gemini") && (
+                                <div className="mb-3">
+                                    <label className="text-[10px] text-[var(--muted)] uppercase tracking-wider mb-1 block">
+                                        {aiMode === "both" ? "Analysis Model (Gemini)" : "Gemini Model"}
+                                    </label>
+                                    <div className="relative">
+                                        <select
+                                            value={selectedGeminiModel}
+                                            onChange={(e) => setSelectedGeminiModel(e.target.value)}
+                                            className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--primary)] cursor-pointer"
+                                        >
+                                            {loadingModels ? (
+                                                <option>Loading models...</option>
+                                            ) : geminiModels.length === 0 ? (
+                                                <option>No Gemini models found — check API key</option>
+                                            ) : (
+                                                geminiModels.map((m) => (
+                                                    <option key={m.id} value={m.id}>{m.name}</option>
+                                                ))
+                                            )}
+                                        </select>
+                                        <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--muted)] pointer-events-none" />
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Claude model dropdown */}
+                            {(aiMode === "both" || aiMode === "claude") && (
+                                <div>
+                                    <label className="text-[10px] text-[var(--muted)] uppercase tracking-wider mb-1 block">
+                                        {aiMode === "both" ? "Generation Model (Claude)" : "Claude Model"}
+                                    </label>
+                                    <div className="relative">
+                                        <select
+                                            value={selectedClaudeModel}
+                                            onChange={(e) => setSelectedClaudeModel(e.target.value)}
+                                            className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--primary)] cursor-pointer"
+                                        >
+                                            {loadingModels ? (
+                                                <option>Loading models...</option>
+                                            ) : claudeModels.length === 0 ? (
+                                                <option>No Claude models found — check API key</option>
+                                            ) : (
+                                                claudeModels.map((m) => (
+                                                    <option key={m.id} value={m.id}>{m.name}</option>
+                                                ))
+                                            )}
+                                        </select>
+                                        <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--muted)] pointer-events-none" />
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
                         {/* Assets */}

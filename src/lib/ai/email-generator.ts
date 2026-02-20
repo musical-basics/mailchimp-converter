@@ -16,12 +16,13 @@ function getAnthropic() {
  */
 async function analyzeWithGemini(
     parsed: ParsedEmail,
-    assetFilenames: string[]
+    assetFilenames: string[],
+    modelId: string = "gemini-2.5-pro"
 ): Promise<string> {
     const contentSummary = generateContentSummary(parsed);
 
     const response = await getGemini().models.generateContent({
-        model: "gemini-2.5-pro",
+        model: modelId,
         contents: [
             {
                 role: "user",
@@ -78,10 +79,11 @@ Be precise in matching images to their correct positions. Map each image filenam
 async function generateWithClaude(
     contentMap: string,
     originalHtml: string,
-    assetFilenames: string[]
+    assetFilenames: string[],
+    modelId: string = "claude-sonnet-4-20250514"
 ): Promise<string> {
     const response = await getAnthropic().messages.create({
-        model: "claude-sonnet-4-20250514",
+        model: modelId,
         max_tokens: 8192,
         messages: [
             {
@@ -128,11 +130,12 @@ Return ONLY the complete HTML email code. No markdown, no explanations, just the
  */
 async function generateFullWithGemini(
     parsed: ParsedEmail,
-    assetFilenames: string[]
+    assetFilenames: string[],
+    modelId: string = "gemini-2.5-pro"
 ): Promise<string> {
     const contentSummary = generateContentSummary(parsed);
     const response = await getGemini().models.generateContent({
-        model: "gemini-2.5-pro",
+        model: modelId,
         contents: [{
             role: "user",
             parts: [{
@@ -174,11 +177,12 @@ Return ONLY the complete HTML email code starting with <!DOCTYPE html>.`,
  */
 async function generateFullWithClaude(
     parsed: ParsedEmail,
-    assetFilenames: string[]
+    assetFilenames: string[],
+    modelId: string = "claude-sonnet-4-20250514"
 ): Promise<string> {
     const contentSummary = generateContentSummary(parsed);
     const response = await getAnthropic().messages.create({
-        model: "claude-sonnet-4-20250514",
+        model: modelId,
         max_tokens: 8192,
         messages: [{
             role: "user",
@@ -221,7 +225,9 @@ Return ONLY the complete HTML email code starting with <!DOCTYPE html>.`,
 export async function convertMailchimpToEmail(
     html: string,
     assetFilenames: string[],
-    model: "both" | "gemini" | "claude" = "both"
+    mode: "both" | "gemini" | "claude" = "both",
+    geminiModel: string = "gemini-2.5-pro",
+    claudeModel: string = "claude-sonnet-4-20250514"
 ): Promise<{ generatedHtml: string; contentMap: string }> {
     const { parseMailchimpHtml } = await import("../parsers/mailchimp-parser");
     const parsed = parseMailchimpHtml(html);
@@ -229,21 +235,18 @@ export async function convertMailchimpToEmail(
     let rawOutput: string;
     let contentMap = "";
 
-    if (model === "gemini") {
-        // Gemini only — single-shot
-        rawOutput = await generateFullWithGemini(parsed, assetFilenames);
-    } else if (model === "claude") {
-        // Claude only — single-shot
-        rawOutput = await generateFullWithClaude(parsed, assetFilenames);
+    if (mode === "gemini") {
+        rawOutput = await generateFullWithGemini(parsed, assetFilenames, geminiModel);
+    } else if (mode === "claude") {
+        rawOutput = await generateFullWithClaude(parsed, assetFilenames, claudeModel);
     } else {
-        // Both — Gemini analyzes, Claude generates
-        const contentMapRaw = await analyzeWithGemini(parsed, assetFilenames);
+        const contentMapRaw = await analyzeWithGemini(parsed, assetFilenames, geminiModel);
         contentMap = contentMapRaw;
         const jsonMatch = contentMapRaw.match(/```(?:json)?\s*([\s\S]*?)```/);
         if (jsonMatch) {
             contentMap = jsonMatch[1].trim();
         }
-        rawOutput = await generateWithClaude(contentMap, html, assetFilenames);
+        rawOutput = await generateWithClaude(contentMap, html, assetFilenames, claudeModel);
     }
 
     // Clean up markdown wrapping
