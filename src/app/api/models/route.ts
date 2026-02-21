@@ -27,7 +27,11 @@ export async function GET() {
                             m.supportedGenerationMethods?.includes("generateContent") &&
                             (name.includes("gemini-2") || name.includes("gemini-1.5")) &&
                             !name.includes("tuning") &&
-                            !name.includes("embedding")
+                            !name.includes("embedding") &&
+                            !name.toLowerCase().includes("tts") &&
+                            !name.toLowerCase().includes("image-generation") &&
+                            !name.toLowerCase().includes("nano") &&
+                            !name.toLowerCase().includes("computer-use")
                         );
                     })
                     .map((m: { name: string; displayName?: string }) => ({
