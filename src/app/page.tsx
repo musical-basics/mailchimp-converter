@@ -137,22 +137,29 @@ export default async function DashboardPage() {
               {templates.slice(0, 8).map((t) => (
                 <tr
                   key={t.id}
-                  className="border-t border-[var(--border)] hover:bg-[var(--surface-hover)] transition-colors"
+                  className="border-t border-[var(--border)] hover:bg-[var(--surface-hover)] transition-colors cursor-pointer"
+                  onClick={undefined}
                 >
                   <td className="px-6 py-3 text-sm font-medium text-[var(--foreground)]">
-                    {t.name}
+                    <Link href={`/templates/${t.id}`} className="hover:text-[var(--primary)] transition-colors">
+                      {t.name}
+                    </Link>
                   </td>
                   <td className="px-6 py-3">
-                    <StatusBadge status={t.status} />
+                    <Link href={`/templates/${t.id}`}>
+                      <StatusBadge status={t.status} />
+                    </Link>
                   </td>
                   <td className="px-6 py-3 text-sm text-[var(--muted)]">
-                    {t.assets?.length || 0} files
+                    <Link href={`/templates/${t.id}`}>
+                      {t.assets?.length || 0} files
+                    </Link>
                   </td>
                   <td className="px-6 py-3 text-sm text-[var(--muted)]">
-                    <div className="flex items-center gap-1.5">
+                    <Link href={`/templates/${t.id}`} className="flex items-center gap-1.5">
                       <Clock className="w-3.5 h-3.5" />
                       {new Date(t.created_at).toLocaleDateString()}
-                    </div>
+                    </Link>
                   </td>
                 </tr>
               ))}
