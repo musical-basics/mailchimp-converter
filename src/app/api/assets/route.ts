@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readdir, readFile } from "fs/promises";
+import { readdir, readFile, writeFile, mkdir } from "fs/promises";
 import path from "path";
 
 const SAMPLES_DIR = path.join(process.cwd(), "samples");
+const UPLOADS_DIR = path.join(SAMPLES_DIR, "uploads");
 
 // GET /api/assets — list all image assets
 // GET /api/assets?file=filename.png — serve a specific file
@@ -45,6 +46,34 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ images });
     } catch {
         return NextResponse.json({ images: [] });
+    }
+}
+
+// POST /api/assets — save uploaded images to disk
+export async function POST(request: NextRequest) {
+    try {
+        const formData = await request.formData();
+        const saved: string[] = [];
+
+        // Ensure uploads directory exists
+        await mkdir(UPLOADS_DIR, { recursive: true });
+
+        for (const [key, value] of formData.entries()) {
+            if (key.startsWith("file_") && value instanceof File) {
+                const buffer = Buffer.from(await value.arrayBuffer());
+                const filePath = path.join(UPLOADS_DIR, value.name);
+                await writeFile(filePath, buffer);
+                saved.push(value.name);
+            }
+        }
+
+        return NextResponse.json({ success: true, saved, count: saved.length });
+    } catch (err) {
+        console.error("Upload error:", err);
+        return NextResponse.json(
+            { success: false, error: "Failed to save images" },
+            { status: 500 }
+        );
     }
 }
 

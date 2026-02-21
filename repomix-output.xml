@@ -1,0 +1,2921 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: node_modules/**, .next/**, .env*, pnpm-lock.yaml, package-lock.json, samples/**, repomix-output.txt, *.pdf, *.png, *.jpg, *.jpeg, *.gif, *.svg, *.ico, *.woff, *.woff2, *.ttf, *.eot, stitch.json, .gitignore, tsconfig.json, postcss.config.mjs, eslint.config.mjs, tailwind.config.ts, My Upcoming Concert*
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+public/
+  file.svg
+  globe.svg
+  next.svg
+  vercel.svg
+  window.svg
+src/
+  app/
+    api/
+      assets/
+        [...filename]/
+          route.ts
+        route.ts
+      models/
+        route.ts
+    library/
+      page.tsx
+    migrate/
+      page.tsx
+    settings/
+      page.tsx
+    templates/
+      [id]/
+        AssetChecker.tsx
+        page.tsx
+      page.tsx
+    actions.ts
+    favicon.ico
+    globals.css
+    layout.tsx
+    page.tsx
+  components/
+    Sidebar.tsx
+  lib/
+    ai/
+      email-generator.ts
+    parsers/
+      mailchimp-parser.ts
+    supabase.ts
+next.config.ts
+package.json
+README.md
+repomix.config.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="repomix.config.json">
+{
+    "output": {
+        "filePath": "repomix-output.xml",
+        "style": "xml"
+    },
+    "ignore": {
+        "useGitignore": true,
+        "useDefaultPatterns": true,
+        "customPatterns": [
+            "node_modules/**",
+            ".next/**",
+            ".env*",
+            "pnpm-lock.yaml",
+            "package-lock.json",
+            "samples/**",
+            "repomix-output.txt",
+            "*.pdf",
+            "*.png",
+            "*.jpg",
+            "*.jpeg",
+            "*.gif",
+            "*.svg",
+            "*.ico",
+            "*.woff",
+            "*.woff2",
+            "*.ttf",
+            "*.eot",
+            "stitch.json",
+            ".gitignore",
+            "tsconfig.json",
+            "postcss.config.mjs",
+            "eslint.config.mjs",
+            "tailwind.config.ts",
+            "My Upcoming Concert*"
+        ]
+    }
+}
+</file>
+
+<file path="public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="src/app/api/assets/[...filename]/route.ts">
+import { NextRequest, NextResponse } from "next/server";
+import { readdir, readFile } from "fs/promises";
+import path from "path";
+
+const SAMPLES_DIR = path.join(process.cwd(), "samples");
+
+// GET /api/assets/filename.png — serve a specific file by path
+export async function GET(
+    request: NextRequest,
+    { params }: { params: Promise<{ filename: string[] }> }
+) {
+    const { filename } = await params;
+    const file = filename.join("/");
+
+    try {
+        const filePath = await findFile(SAMPLES_DIR, file);
+        if (!filePath) {
+            return NextResponse.json({ error: `File not found: ${file}` }, { status: 404 });
+        }
+
+        const buffer = await readFile(filePath);
+        const ext = path.extname(file).toLowerCase();
+        const mimeTypes: Record<string, string> = {
+            ".png": "image/png",
+            ".jpg": "image/jpeg",
+            ".jpeg": "image/jpeg",
+            ".gif": "image/gif",
+            ".svg": "image/svg+xml",
+        };
+
+        return new NextResponse(buffer, {
+            headers: {
+                "Content-Type": mimeTypes[ext] || "application/octet-stream",
+                "Cache-Control": "public, max-age=31536000",
+            },
+        });
+    } catch {
+        return NextResponse.json({ error: `File not found: ${file}` }, { status: 404 });
+    }
+}
+
+async function findFile(dir: string, filename: string): Promise<string | null> {
+    const entries = await readdir(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            const found = await findFile(fullPath, filename);
+            if (found) return found;
+        } else if (entry.name === filename) {
+            return fullPath;
+        }
+    }
+
+    return null;
+}
+</file>
+
+<file path="src/app/api/assets/route.ts">
+import { NextRequest, NextResponse } from "next/server";
+import { readdir, readFile } from "fs/promises";
+import path from "path";
+
+const SAMPLES_DIR = path.join(process.cwd(), "samples");
+
+// GET /api/assets — list all image assets
+// GET /api/assets?file=filename.png — serve a specific file
+export async function GET(request: NextRequest) {
+    const file = request.nextUrl.searchParams.get("file");
+
+    if (file) {
+        // Serve a specific file
+        try {
+            // Find the file recursively in samples
+            const filePath = await findFile(SAMPLES_DIR, file);
+            if (!filePath) {
+                return NextResponse.json({ error: "File not found" }, { status: 404 });
+            }
+
+            const buffer = await readFile(filePath);
+            const ext = path.extname(file).toLowerCase();
+            const mimeTypes: Record<string, string> = {
+                ".png": "image/png",
+                ".jpg": "image/jpeg",
+                ".jpeg": "image/jpeg",
+                ".gif": "image/gif",
+                ".svg": "image/svg+xml",
+            };
+
+            return new NextResponse(buffer, {
+                headers: {
+                    "Content-Type": mimeTypes[ext] || "application/octet-stream",
+                    "Cache-Control": "public, max-age=31536000",
+                },
+            });
+        } catch {
+            return NextResponse.json({ error: "File not found" }, { status: 404 });
+        }
+    }
+
+    // List all image assets
+    try {
+        const images = await collectImages(SAMPLES_DIR);
+        return NextResponse.json({ images });
+    } catch {
+        return NextResponse.json({ images: [] });
+    }
+}
+
+async function collectImages(dir: string, prefix = ""): Promise<{ name: string; path: string }[]> {
+    const entries = await readdir(dir, { withFileTypes: true });
+    const images: { name: string; path: string }[] = [];
+
+    for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            const sub = await collectImages(fullPath, `${prefix}${entry.name}/`);
+            images.push(...sub);
+        } else {
+            const ext = path.extname(entry.name).toLowerCase();
+            if ([".png", ".jpg", ".jpeg", ".gif"].includes(ext)) {
+                images.push({
+                    name: entry.name,
+                    path: `${prefix}${entry.name}`,
+                });
+            }
+        }
+    }
+
+    return images;
+}
+
+async function findFile(dir: string, filename: string): Promise<string | null> {
+    const entries = await readdir(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            const found = await findFile(fullPath, filename);
+            if (found) return found;
+        } else if (entry.name === filename) {
+            return fullPath;
+        }
+    }
+
+    return null;
+}
+</file>
+
+<file path="src/app/api/models/route.ts">
+import { NextResponse } from "next/server";
+
+interface ModelInfo {
+    id: string;
+    name: string;
+    provider: "gemini" | "anthropic";
+}
+
+export async function GET() {
+    const models: ModelInfo[] = [];
+
+    // Fetch Gemini models
+    try {
+        const geminiKey = process.env.GEMINI_API_KEY;
+        if (geminiKey) {
+            const res = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models?key=${geminiKey}`,
+                { next: { revalidate: 3600 } } // cache for 1 hour
+            );
+            if (res.ok) {
+                const data = await res.json();
+                const geminiModels = (data.models || [])
+                    .filter((m: { name: string; supportedGenerationMethods?: string[] }) => {
+                        const name = m.name.replace("models/", "");
+                        // Only include models that support content generation and are recent
+                        return (
+                            m.supportedGenerationMethods?.includes("generateContent") &&
+                            (name.includes("gemini-2") || name.includes("gemini-1.5")) &&
+                            !name.includes("tuning") &&
+                            !name.includes("embedding")
+                        );
+                    })
+                    .map((m: { name: string; displayName?: string }) => ({
+                        id: m.name.replace("models/", ""),
+                        name: m.displayName || m.name.replace("models/", ""),
+                        provider: "gemini" as const,
+                    }))
+                    // Sort so latest models appear first
+                    .sort((a: ModelInfo, b: ModelInfo) => b.id.localeCompare(a.id));
+
+                models.push(...geminiModels);
+            }
+        }
+    } catch (err) {
+        console.error("Failed to fetch Gemini models:", err);
+    }
+
+    // Fetch Anthropic models
+    try {
+        const anthropicKey = process.env.ANTHROPIC_API_KEY;
+        if (anthropicKey) {
+            const res = await fetch("https://api.anthropic.com/v1/models", {
+                headers: {
+                    "x-api-key": anthropicKey,
+                    "anthropic-version": "2023-06-01",
+                },
+                next: { revalidate: 3600 },
+            });
+            if (res.ok) {
+                const data = await res.json();
+                const anthropicModels = (data.data || [])
+                    .filter((m: { id: string }) => {
+                        return (
+                            m.id.includes("claude") &&
+                            !m.id.includes("instant")
+                        );
+                    })
+                    .map((m: { id: string; display_name?: string }) => ({
+                        id: m.id,
+                        name: m.display_name || m.id,
+                        provider: "anthropic" as const,
+                    }))
+                    .sort((a: ModelInfo, b: ModelInfo) => b.id.localeCompare(a.id));
+
+                models.push(...anthropicModels);
+            }
+        }
+    } catch (err) {
+        console.error("Failed to fetch Anthropic models:", err);
+    }
+
+    return NextResponse.json({ models });
+}
+</file>
+
+<file path="src/app/settings/page.tsx">
+import { Settings, Key, Database, Cpu } from "lucide-react";
+
+export default function SettingsPage() {
+    return (
+        <div className="p-8 animate-fade-in">
+            <div className="mb-6">
+                <h1 className="text-2xl font-bold text-[var(--foreground)]">Settings</h1>
+                <p className="text-sm text-[var(--muted)] mt-1">
+                    Configuration for AI models and database connection.
+                </p>
+            </div>
+
+            <div className="space-y-6 max-w-2xl">
+                {/* AI Models */}
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                        <Cpu className="w-5 h-5 text-[var(--primary)]" />
+                        <h3 className="text-sm font-semibold text-[var(--foreground)]">AI Models</h3>
+                    </div>
+                    <div className="space-y-4">
+                        <ConfigRow
+                            label="Analysis Model"
+                            value="Gemini 2.5 Pro"
+                            description="Analyzes Mailchimp HTML structure and creates content maps"
+                        />
+                        <ConfigRow
+                            label="Generation Model"
+                            value="Claude Sonnet 4"
+                            description="Generates clean, portable HTML email code"
+                        />
+                    </div>
+                </div>
+
+                {/* API Keys */}
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                        <Key className="w-5 h-5 text-[var(--accent)]" />
+                        <h3 className="text-sm font-semibold text-[var(--foreground)]">API Keys</h3>
+                    </div>
+                    <div className="space-y-4">
+                        <ConfigRow
+                            label="GEMINI_API_KEY"
+                            value="••••••••••••"
+                            description="Set via .env.local"
+                            masked
+                        />
+                        <ConfigRow
+                            label="ANTHROPIC_API_KEY"
+                            value="••••••••••••"
+                            description="Set via .env.local"
+                            masked
+                        />
+                    </div>
+                </div>
+
+                {/* Database */}
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                        <Database className="w-5 h-5 text-[var(--success)]" />
+                        <h3 className="text-sm font-semibold text-[var(--foreground)]">Database</h3>
+                    </div>
+                    <div className="space-y-4">
+                        <ConfigRow
+                            label="Supabase URL"
+                            value="••••••••••••"
+                            description="NEXT_PUBLIC_SUPABASE_URL in .env.local"
+                            masked
+                        />
+                        <ConfigRow
+                            label="Table"
+                            value="mailchimp_templates"
+                            description="Stores all converted templates"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function ConfigRow({
+    label,
+    value,
+    description,
+    masked = false,
+}: {
+    label: string;
+    value: string;
+    description: string;
+    masked?: boolean;
+}) {
+    return (
+        <div className="flex items-center justify-between py-2 border-b border-[var(--border)] last:border-0">
+            <div>
+                <p className="text-sm font-medium text-[var(--foreground)]">{label}</p>
+                <p className="text-xs text-[var(--muted)]">{description}</p>
+            </div>
+            <span
+                className={`text-sm font-mono px-3 py-1 rounded-md bg-[var(--background)] ${masked ? "text-[var(--muted)]" : "text-[var(--accent)]"}`}
+            >
+                {value}
+            </span>
+        </div>
+    );
+}
+</file>
+
+<file path="src/app/templates/[id]/AssetChecker.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+import { CheckCircle2, XCircle, Loader2, ExternalLink } from "lucide-react";
+
+interface AssetStatus {
+    src: string;
+    status: "checking" | "ok" | "broken";
+    filename: string;
+}
+
+export function AssetChecker({ imageSrcs }: { imageSrcs: string[] }) {
+    const [assets, setAssets] = useState<AssetStatus[]>(
+        imageSrcs.map((src) => ({
+            src,
+            status: "checking",
+            filename: src.split("/").pop() || src,
+        }))
+    );
+
+    useEffect(() => {
+        imageSrcs.forEach(async (src, i) => {
+            try {
+                // For relative URLs, check against our API
+                const url = src.startsWith("http") ? src : src;
+                const res = await fetch(url, { method: "HEAD" });
+
+                setAssets((prev) => {
+                    const next = [...prev];
+                    next[i] = {
+                        ...next[i],
+                        status: res.ok ? "ok" : "broken",
+                    };
+                    return next;
+                });
+            } catch {
+                setAssets((prev) => {
+                    const next = [...prev];
+                    next[i] = { ...next[i], status: "broken" };
+                    return next;
+                });
+            }
+        });
+    }, [imageSrcs]);
+
+    const okCount = assets.filter((a) => a.status === "ok").length;
+    const brokenCount = assets.filter((a) => a.status === "broken").length;
+
+    return (
+        <div>
+            {/* Summary */}
+            <div className="flex items-center gap-3 mb-3 px-1">
+                <span className="flex items-center gap-1 text-[10px] text-[var(--success)]">
+                    <CheckCircle2 className="w-3 h-3" /> {okCount} linked
+                </span>
+                <span className="flex items-center gap-1 text-[10px] text-[var(--danger)]">
+                    <XCircle className="w-3 h-3" /> {brokenCount} broken
+                </span>
+            </div>
+
+            {/* Individual assets */}
+            {assets.map((asset, i) => (
+                <div
+                    key={i}
+                    className={`p-2.5 rounded-lg border mb-2 ${asset.status === "ok"
+                            ? "bg-[var(--success)]/5 border-[var(--success)]/20"
+                            : asset.status === "broken"
+                                ? "bg-[var(--danger)]/5 border-[var(--danger)]/20"
+                                : "bg-[var(--background)] border-[var(--border)]"
+                        }`}
+                >
+                    <div className="flex items-center gap-2 mb-1">
+                        {asset.status === "checking" ? (
+                            <Loader2 className="w-3 h-3 text-[var(--muted)] animate-spin shrink-0" />
+                        ) : asset.status === "ok" ? (
+                            <CheckCircle2 className="w-3 h-3 text-[var(--success)] shrink-0" />
+                        ) : (
+                            <XCircle className="w-3 h-3 text-[var(--danger)] shrink-0" />
+                        )}
+                        <span className="text-xs font-medium text-[var(--foreground)] truncate flex-1">
+                            {asset.filename}
+                        </span>
+                        {asset.status === "ok" && (
+                            <a
+                                href={asset.src}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[var(--primary)]"
+                            >
+                                <ExternalLink className="w-3 h-3" />
+                            </a>
+                        )}
+                    </div>
+                    <p className="text-[10px] text-[var(--muted)] font-mono break-all pl-5">
+                        {asset.src}
+                    </p>
+                </div>
+            ))}
+        </div>
+    );
+}
+</file>
+
+<file path="src/app/templates/page.tsx">
+import {
+    FileText,
+    Clock,
+    CheckCircle2,
+    XCircle,
+    Trash2,
+    Eye,
+    Download,
+} from "lucide-react";
+import Link from "next/link";
+import { getTemplates, deleteTemplate } from "../actions";
+
+export default async function TemplatesPage() {
+    let templates: Awaited<ReturnType<typeof getTemplates>> = [];
+    try {
+        templates = await getTemplates();
+    } catch {
+        // Supabase not configured yet
+    }
+
+    return (
+        <div className="p-8 animate-fade-in">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+                <div>
+                    <h1 className="text-2xl font-bold text-[var(--foreground)]">Saved Templates</h1>
+                    <p className="text-sm text-[var(--muted)] mt-1">
+                        All your converted email templates saved in Supabase.
+                    </p>
+                </div>
+                <Link
+                    href="/migrate"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-sm font-medium text-white hover:bg-[var(--primary-hover)] transition-colors"
+                >
+                    + New Migration
+                </Link>
+            </div>
+
+            {templates.length === 0 ? (
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] py-20 text-center">
+                    <FileText className="w-10 h-10 text-[var(--muted)] mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">
+                        No templates yet
+                    </h3>
+                    <p className="text-sm text-[var(--muted)] mb-6">
+                        Start by converting a Mailchimp template.
+                    </p>
+                    <Link
+                        href="/migrate"
+                        className="px-5 py-2.5 rounded-lg bg-[var(--primary)] text-sm font-medium text-white hover:bg-[var(--primary-hover)] transition-colors"
+                    >
+                        Start Migration
+                    </Link>
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 gap-4">
+                    {templates.map((t) => (
+                        <div
+                            key={t.id}
+                            className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 hover:border-[var(--primary)]/30 transition-colors"
+                        >
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center">
+                                        <FileText className="w-5 h-5 text-[var(--primary)]" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-sm font-semibold text-[var(--foreground)]">{t.name}</h3>
+                                        <div className="flex items-center gap-3 mt-1">
+                                            <StatusBadge status={t.status} />
+                                            <span className="text-xs text-[var(--muted)] flex items-center gap-1">
+                                                <Clock className="w-3 h-3" />
+                                                {new Date(t.created_at).toLocaleString()}
+                                            </span>
+                                            <span className="text-xs text-[var(--muted)]">
+                                                {t.assets?.length || 0} assets
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Link
+                                        href={`/templates/${t.id}`}
+                                        className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-colors"
+                                        title="View"
+                                    >
+                                        <Eye className="w-4 h-4" />
+                                    </Link>
+                                    <form
+                                        action={async () => {
+                                            "use server";
+                                            await deleteTemplate(t.id);
+                                        }}
+                                    >
+                                        <button
+                                            type="submit"
+                                            className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--danger)] hover:bg-[var(--danger)]/10 transition-colors"
+                                            title="Delete"
+                                        >
+                                            <Trash2 className="w-4 h-4" />
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function StatusBadge({ status }: { status: string }) {
+    const config = {
+        completed: { icon: CheckCircle2, color: "var(--success)", label: "Completed" },
+        draft: { icon: Clock, color: "var(--warning)", label: "Draft" },
+        failed: { icon: XCircle, color: "var(--danger)", label: "Failed" },
+    }[status] || { icon: Clock, color: "var(--muted)", label: status };
+
+    const Icon = config.icon;
+
+    return (
+        <span
+            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium"
+            style={{
+                backgroundColor: `${config.color}15`,
+                color: config.color,
+            }}
+        >
+            <Icon className="w-3 h-3" />
+            {config.label}
+        </span>
+    );
+}
+</file>
+
+<file path="src/components/Sidebar.tsx">
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+    LayoutDashboard,
+    FolderOpen,
+    ImageIcon,
+    Settings,
+    Zap,
+    Mail,
+} from "lucide-react";
+
+const navItems = [
+    { href: "/", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/migrate", label: "New Migration", icon: Zap },
+    { href: "/library", label: "Image Library", icon: ImageIcon },
+    { href: "/templates", label: "Templates", icon: FolderOpen },
+    { href: "/settings", label: "Settings", icon: Settings },
+];
+
+export default function Sidebar() {
+    const pathname = usePathname();
+
+    return (
+        <aside className="fixed left-0 top-0 h-screen w-64 flex flex-col border-r bg-[var(--surface)] border-[var(--border)]">
+            {/* Logo */}
+            <div className="flex items-center gap-3 px-6 py-5 border-b border-[var(--border)]">
+                <div className="w-9 h-9 rounded-lg bg-[var(--primary)] flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                    <h1 className="text-sm font-bold text-[var(--foreground)]">Migration Tool</h1>
+                    <span className="text-[10px] text-[var(--muted)] font-mono">v2.4.0</span>
+                </div>
+            </div>
+
+            {/* Navigation */}
+            <nav className="flex-1 px-3 py-4 space-y-1">
+                {navItems.map((item) => {
+                    const isActive = pathname === item.href;
+                    const Icon = item.icon;
+                    return (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200
+                ${isActive
+                                    ? "bg-[var(--primary)] text-white shadow-lg shadow-[var(--primary)]/20"
+                                    : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)]"
+                                }`}
+                        >
+                            <Icon className="w-4.5 h-4.5" />
+                            {item.label}
+                        </Link>
+                    );
+                })}
+            </nav>
+
+            {/* Footer */}
+            <div className="px-4 py-4 border-t border-[var(--border)]">
+                <div className="flex items-center gap-3 px-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] flex items-center justify-center text-xs font-bold text-white">
+                        LY
+                    </div>
+                    <div>
+                        <p className="text-xs font-semibold text-[var(--foreground)]">Lionel Yu</p>
+                        <p className="text-[10px] text-[var(--muted)]">Admin</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    );
+}
+</file>
+
+<file path="src/lib/parsers/mailchimp-parser.ts">
+import * as cheerio from "cheerio";
+
+export interface ParsedBlock {
+    type: "text" | "image" | "button" | "divider" | "social" | "footer" | "logo";
+    content?: string;
+    src?: string;
+    href?: string;
+    alt?: string;
+    style?: string;
+    width?: string;
+    children?: ParsedBlock[];
+}
+
+export interface ParsedEmail {
+    title: string;
+    previewText: string;
+    blocks: ParsedBlock[];
+    images: { filename: string; originalSrc: string; alt: string }[];
+    links: { text: string; href: string }[];
+    socialLinks: { platform: string; href: string; icon: string }[];
+    footerHtml: string;
+    rawHtml: string;
+}
+
+/**
+ * Parses Mailchimp HTML exports into structured content blocks.
+ * Strips Mailchimp-specific markup (MSO conditionals, archive bar, tracking)
+ * and extracts meaningful content sections.
+ */
+export function parseMailchimpHtml(html: string): ParsedEmail {
+    const $ = cheerio.load(html);
+
+    // Extract metadata
+    const title =
+        $("title").text() || $('meta[property="og:title"]').attr("content") || "Untitled Email";
+    const previewText = $(".mcnPreviewText").text().trim();
+
+    // Remove Mailchimp archive elements
+    $("#awesomewrap").remove();
+    $(".mcnPreviewText").remove();
+    $("script").remove();
+    $("link[rel=stylesheet]").remove();
+
+    // Remove MSO conditional comments - we already have the non-mso versions
+    const cleanedHtml = html.replace(/<!--\[if mso\]>[\s\S]*?<!\[endif\]-->/gi, "");
+
+    const blocks: ParsedBlock[] = [];
+    const images: ParsedEmail["images"] = [];
+    const links: ParsedEmail["links"] = [];
+    const socialLinks: ParsedEmail["socialLinks"] = [];
+
+    // Extract images
+    $("img.mceImage, img.mceLogo, img.imageDropZone").each((_, el) => {
+        const $el = $(el);
+        const src = $el.attr("src") || "";
+        const alt = $el.attr("alt") || "";
+        const width = $el.attr("width") || "";
+        const parentLink = $el.closest("a").attr("href") || "";
+
+        // Extract filename from local path
+        const filename = src.split("/").pop() || src;
+
+        images.push({ filename, originalSrc: src, alt });
+
+        const isLogo = $el.hasClass("mceLogo");
+        blocks.push({
+            type: isLogo ? "logo" : "image",
+            src,
+            alt,
+            href: parentLink,
+            width,
+        });
+    });
+
+    // Extract text blocks
+    $(".mceText").each((_, el) => {
+        const $el = $(el);
+        const innerHtml = $el.html()?.trim();
+        if (innerHtml && innerHtml.length > 10) {
+            blocks.push({
+                type: "text",
+                content: innerHtml,
+            });
+        }
+    });
+
+    // Extract buttons
+    $(".mceButtonLink").each((_, el) => {
+        const $el = $(el);
+        const href = $el.attr("href") || "";
+        const text = $el.text().trim();
+        const style = $el.attr("style") || "";
+
+        if (text) {
+            blocks.push({
+                type: "button",
+                content: text,
+                href,
+                style,
+            });
+            links.push({ text, href });
+        }
+    });
+
+    // Extract social follow icons
+    $(".mceSocialFollowIcon a").each((_, el) => {
+        const $el = $(el);
+        const href = $el.attr("href") || "";
+        const img = $el.find("img");
+        const alt = img.attr("alt") || "";
+        const icon = img.attr("src") || "";
+
+        const platform = alt.replace(" icon", "").toLowerCase();
+        socialLinks.push({ platform, href, icon });
+    });
+
+    // Extract footer
+    const footerSection = $(".mceFooterSection");
+    const footerHtml = footerSection.html()?.trim() || "";
+
+    return {
+        title,
+        previewText,
+        blocks,
+        images,
+        links,
+        socialLinks,
+        footerHtml,
+        rawHtml: cleanedHtml,
+    };
+}
+
+/**
+ * Generates a content summary for the AI model, describing the structure
+ * of the parsed email in plain language.
+ */
+export function generateContentSummary(parsed: ParsedEmail): string {
+    const sections: string[] = [];
+
+    sections.push(`# Email: "${parsed.title}"`);
+    if (parsed.previewText) {
+        sections.push(`Preview text: "${parsed.previewText}"`);
+    }
+    sections.push("");
+
+    sections.push(`## Content Structure (${parsed.blocks.length} blocks):`);
+    parsed.blocks.forEach((block, i) => {
+        switch (block.type) {
+            case "image":
+                sections.push(
+                    `${i + 1}. IMAGE: "${block.alt || "no alt"}" (${block.width}px wide) ${block.href ? `→ links to: ${block.href}` : ""}`
+                );
+                break;
+            case "logo":
+                sections.push(`${i + 1}. LOGO IMAGE: ${block.src}`);
+                break;
+            case "text":
+                const preview = (block.content || "").replace(/<[^>]+>/g, "").substring(0, 100);
+                sections.push(`${i + 1}. TEXT BLOCK: "${preview}..."`);
+                break;
+            case "button":
+                sections.push(`${i + 1}. CTA BUTTON: "${block.content}" → ${block.href}`);
+                break;
+        }
+    });
+
+    sections.push("");
+    sections.push(`## Images (${parsed.images.length} total):`);
+    parsed.images.forEach((img, i) => {
+        sections.push(`  ${i + 1}. ${img.filename} (alt: "${img.alt}")`);
+    });
+
+    sections.push("");
+    sections.push(`## Social Links: ${parsed.socialLinks.map((s) => s.platform).join(", ")}`);
+
+    return sections.join("\n");
+}
+</file>
+
+<file path="src/lib/supabase.ts">
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+
+let _supabase: SupabaseClient | null = null;
+
+export function getSupabaseClient(): SupabaseClient | null {
+    if (!supabaseUrl || !supabaseKey) {
+        return null;
+    }
+    if (!_supabase) {
+        _supabase = createClient(supabaseUrl, supabaseKey);
+    }
+    return _supabase;
+}
+
+// For backward compatibility
+export const supabase = supabaseUrl && supabaseKey
+    ? createClient(supabaseUrl, supabaseKey)
+    : (null as unknown as SupabaseClient);
+
+export interface MailchimpTemplate {
+    id: string;
+    name: string;
+    source_html: string;
+    generated_html: string;
+    assets: { filename: string; url: string; slot: string }[];
+    status: "draft" | "completed" | "failed";
+    created_at: string;
+    updated_at: string;
+}
+</file>
+
+<file path="README.md">
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="src/app/library/page.tsx">
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { Upload, Search, X, ImageIcon } from "lucide-react";
+
+interface AssetImage {
+    name: string;
+    path: string;
+}
+
+export default function LibraryPage() {
+    const [images, setImages] = useState<AssetImage[]>([]);
+    const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true);
+    const [uploadedFiles, setUploadedFiles] = useState<{ name: string; url: string }[]>([]);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        fetchImages();
+    }, []);
+
+    const fetchImages = async () => {
+        try {
+            const res = await fetch("/api/assets");
+            const data = await res.json();
+            setImages(data.images || []);
+        } catch {
+            console.error("Failed to fetch images");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = Array.from(e.target.files || []);
+        const newUploaded = files.map((f) => ({
+            name: f.name,
+            url: URL.createObjectURL(f),
+        }));
+        setUploadedFiles((prev) => [...prev, ...newUploaded]);
+    };
+
+    const filteredImages = images.filter((img) =>
+        img.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+    const allDisplayImages = [
+        ...filteredImages.map((img) => ({
+            name: img.name,
+            src: `/api/assets?file=${encodeURIComponent(img.name)}`,
+            isUploaded: false,
+        })),
+        ...uploadedFiles
+            .filter((f) => f.name.toLowerCase().includes(search.toLowerCase()))
+            .map((f) => ({
+                name: f.name,
+                src: f.url,
+                isUploaded: true,
+            })),
+    ];
+
+    return (
+        <div className="p-8 animate-fade-in">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+                <div>
+                    <h1 className="text-2xl font-bold text-[var(--foreground)]">Image Library</h1>
+                    <p className="text-sm text-[var(--muted)] mt-1">
+                        Browse and manage uploaded images for your email templates.
+                    </p>
+                </div>
+                <button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-sm font-medium text-white hover:bg-[var(--primary-hover)] transition-colors"
+                >
+                    <Upload className="w-4 h-4" />
+                    Upload New
+                </button>
+                <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="hidden"
+                    onChange={handleUpload}
+                />
+            </div>
+
+            {/* Search */}
+            <div className="relative mb-6">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted)]" />
+                <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search images..."
+                    className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--primary)]"
+                />
+                {search && (
+                    <button
+                        onClick={() => setSearch("")}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--foreground)]"
+                    >
+                        <X className="w-4 h-4" />
+                    </button>
+                )}
+            </div>
+
+            {loading ? (
+                <div className="grid grid-cols-4 gap-4">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                        <div key={i} className="rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+                            <div className="aspect-video bg-[var(--background)] animate-pulse" />
+                            <div className="p-3">
+                                <div className="h-3 w-3/4 bg-[var(--background)] rounded animate-pulse" />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ) : allDisplayImages.length === 0 ? (
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] py-20 text-center">
+                    <ImageIcon className="w-10 h-10 text-[var(--muted)] mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">No images found</h3>
+                    <p className="text-sm text-[var(--muted)] mb-6">
+                        Upload images or add samples to the samples directory.
+                    </p>
+                    <button
+                        onClick={() => fileInputRef.current?.click()}
+                        className="px-5 py-2.5 rounded-lg bg-[var(--primary)] text-sm font-medium text-white hover:bg-[var(--primary-hover)] transition-colors"
+                    >
+                        Upload Images
+                    </button>
+                </div>
+            ) : (
+                <div className="grid grid-cols-4 gap-4">
+                    {allDisplayImages.map((img, i) => (
+                        <div
+                            key={i}
+                            className="group rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden hover:border-[var(--primary)] transition-colors"
+                        >
+                            <div className="aspect-video bg-[var(--background)] relative overflow-hidden">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src={img.src}
+                                    alt={img.name}
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                        // Hide broken images and show fallback
+                                        const target = e.target as HTMLImageElement;
+                                        target.style.display = "none";
+                                        target.parentElement!.classList.add("flex", "items-center", "justify-center");
+                                        const icon = document.createElement("div");
+                                        icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--muted)]"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>`;
+                                        target.parentElement!.appendChild(icon);
+                                    }}
+                                />
+                                {img.isUploaded && (
+                                    <span className="absolute top-2 right-2 text-[10px] font-medium bg-[var(--primary)] text-white px-2 py-0.5 rounded-full">
+                                        New
+                                    </span>
+                                )}
+                            </div>
+                            <div className="p-3">
+                                <p className="text-xs font-medium text-[var(--foreground)] truncate" title={img.name}>
+                                    {img.name}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+
+                    {/* Upload Card */}
+                    <button
+                        onClick={() => fileInputRef.current?.click()}
+                        className="rounded-xl border-2 border-dashed border-[var(--border)] flex flex-col items-center justify-center py-12 hover:border-[var(--primary)] transition-colors group"
+                    >
+                        <Upload className="w-6 h-6 text-[var(--muted)] group-hover:text-[var(--primary)] mb-2 transition-colors" />
+                        <span className="text-xs text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors">
+                            Upload Images
+                        </span>
+                    </button>
+                </div>
+            )}
+        </div>
+    );
+}
+</file>
+
+<file path="src/app/templates/[id]/page.tsx">
+import { Eye, Code, ArrowLeft, ImageIcon, ExternalLink, CheckCircle2, XCircle, Link2 } from "lucide-react";
+import Link from "next/link";
+import { getTemplate } from "../../actions";
+import { notFound } from "next/navigation";
+import { AssetChecker } from "./AssetChecker";
+
+export default async function TemplateDetailPage({
+    params,
+}: {
+    params: Promise<{ id: string }>;
+}) {
+    const { id } = await params;
+    const template = await getTemplate(id);
+
+    if (!template) {
+        notFound();
+    }
+
+    // Extract all image src URLs from the generated HTML
+    const imgSrcRegex = /< *img[^>]+src=["']([^"']+)["']/gi;
+    const imageSrcs: string[] = [];
+    let match;
+    while ((match = imgSrcRegex.exec(template.generated_html || "")) !== null) {
+        imageSrcs.push(match[1]);
+    }
+
+    // Deduplicate
+    const uniqueImageSrcs = [...new Set(imageSrcs)];
+
+    // Get stored assets from the template record
+    const storedAssets = template.assets || [];
+
+    return (
+        <div className="p-8 animate-fade-in">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                    <Link
+                        href="/templates"
+                        className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-colors"
+                    >
+                        <ArrowLeft className="w-5 h-5" />
+                    </Link>
+                    <div>
+                        <h1 className="text-xl font-bold text-[var(--foreground)]">{template.name}</h1>
+                        <p className="text-xs text-[var(--muted)] mt-0.5">
+                            Created {new Date(template.created_at).toLocaleString()} · {storedAssets.length} assets stored
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-6">
+                {/* Left: Preview + Code (2 cols) */}
+                <div className="col-span-2 space-y-6">
+                    {/* Preview */}
+                    <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+                        <div className="px-5 py-3 border-b border-[var(--border)] flex items-center gap-2">
+                            <Eye className="w-4 h-4 text-[var(--muted)]" />
+                            <span className="text-sm font-medium text-[var(--foreground)]">Generated Email Preview</span>
+                        </div>
+                        <div className="bg-white">
+                            <iframe
+                                srcDoc={template.generated_html}
+                                className="w-full min-h-[700px] border-0"
+                                title="Email Preview"
+                                sandbox="allow-same-origin"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Code */}
+                    <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+                        <div className="px-5 py-3 border-b border-[var(--border)] flex items-center gap-2">
+                            <Code className="w-4 h-4 text-[var(--muted)]" />
+                            <span className="text-sm font-medium text-[var(--foreground)]">HTML Source</span>
+                        </div>
+                        <pre className="p-5 text-xs text-[var(--foreground)] overflow-auto max-h-96 code-editor">
+                            {template.generated_html}
+                        </pre>
+                    </div>
+                </div>
+
+                {/* Right: Asset Loader Panel (1 col) */}
+                <div className="space-y-4">
+                    {/* Image URLs found in HTML */}
+                    <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+                        <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-2">
+                            <Link2 className="w-4 h-4 text-[var(--primary)]" />
+                            <span className="text-sm font-semibold text-[var(--foreground)]">
+                                Image URLs in HTML ({uniqueImageSrcs.length})
+                            </span>
+                        </div>
+                        <div className="p-3 space-y-2 max-h-[500px] overflow-y-auto">
+                            {uniqueImageSrcs.length === 0 ? (
+                                <p className="text-xs text-[var(--muted)] text-center py-4">
+                                    No image URLs found in the generated HTML.
+                                </p>
+                            ) : (
+                                <AssetChecker imageSrcs={uniqueImageSrcs} />
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Stored Assets from Supabase */}
+                    <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+                        <div className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-2">
+                            <ImageIcon className="w-4 h-4 text-[var(--accent)]" />
+                            <span className="text-sm font-semibold text-[var(--foreground)]">
+                                Stored Assets ({storedAssets.length})
+                            </span>
+                        </div>
+                        <div className="p-3 space-y-2 max-h-[400px] overflow-y-auto">
+                            {storedAssets.length === 0 ? (
+                                <p className="text-xs text-[var(--muted)] text-center py-4">
+                                    No assets stored with this template.
+                                </p>
+                            ) : (
+                                storedAssets.map((asset: { filename: string; url: string; slot: string }, i: number) => (
+                                    <div
+                                        key={i}
+                                        className="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]"
+                                    >
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <ImageIcon className="w-3 h-3 text-[var(--accent)] shrink-0" />
+                                            <span className="text-xs font-medium text-[var(--foreground)] truncate">
+                                                {asset.filename}
+                                            </span>
+                                        </div>
+                                        <p className="text-[10px] text-[var(--muted)] font-mono break-all pl-5">
+                                            {asset.url}
+                                        </p>
+                                        {asset.slot && (
+                                            <p className="text-[10px] text-[var(--accent)] pl-5 mt-0.5">
+                                                Slot: {asset.slot}
+                                            </p>
+                                        )}
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Debug Info */}
+                    <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4">
+                        <h4 className="text-xs font-semibold text-[var(--foreground)] mb-2">Debug Info</h4>
+                        <div className="space-y-1.5 text-[10px] text-[var(--muted)] font-mono">
+                            <p>Template ID: {template.id}</p>
+                            <p>Status: {template.status}</p>
+                            <p>Image refs in HTML: {uniqueImageSrcs.length}</p>
+                            <p>Assets in DB: {storedAssets.length}</p>
+                            <p>Created: {template.created_at}</p>
+                            <p>Updated: {template.updated_at}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+</file>
+
+<file path="src/app/globals.css">
+@import "tailwindcss";
+
+:root {
+  --background: #0b0f19;
+  --foreground: #e4e8f1;
+  --surface: #111827;
+  --surface-hover: #1a2236;
+  --border: #1e293b;
+  --primary: #137fec;
+  --primary-hover: #1a93ff;
+  --accent: #06b6d4;
+  --muted: #64748b;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: "Manrope", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* Code editor area */
+.code-editor {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+/* Drop zone hover */
+.drop-zone-active {
+  border-color: var(--primary) !important;
+  background: rgba(19, 127, 236, 0.05) !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(19, 127, 236, 0.3); }
+  50% { box-shadow: 0 0 20px 4px rgba(19, 127, 236, 0.15); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+</file>
+
+<file path="src/app/layout.tsx">
+import type { Metadata } from "next";
+import { Manrope, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
+import Sidebar from "@/components/Sidebar";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: "Email Migration Tool — Mailchimp to HTML Email",
+  description:
+    "AI-powered tool to convert Mailchimp HTML exports into clean, portable HTML email templates with intelligent image placement.",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={`${manrope.variable} ${jetbrainsMono.variable}`}>
+      <body className="antialiased">
+        <Sidebar />
+        <main className="ml-64 min-h-screen">
+          {children}
+        </main>
+      </body>
+    </html>
+  );
+}
+</file>
+
+<file path="next.config.ts">
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb",
+    },
+  },
+};
+
+export default nextConfig;
+</file>
+
+<file path="package.json">
+{
+  "name": "stitch-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
+    "@google/genai": "^1.42.0",
+    "@supabase/supabase-js": "^2.97.0",
+    "cheerio": "^1.2.0",
+    "lucide-react": "^0.575.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+</file>
+
+<file path="src/app/migrate/page.tsx">
+"use client";
+
+import { useState, useRef, useCallback, useEffect } from "react";
+import {
+    Upload,
+    FileText,
+    Image as ImageIcon,
+    Sparkles,
+    Loader2,
+    Download,
+    Save,
+    Eye,
+    Code,
+    ChevronRight,
+    CheckCircle2,
+    AlertCircle,
+    X,
+    Cpu,
+    ChevronDown,
+} from "lucide-react";
+import { convertEmail, analyzeEmail } from "../actions";
+
+type ViewMode = "source" | "preview" | "code";
+type AiMode = "both" | "gemini" | "claude";
+
+interface ModelInfo {
+    id: string;
+    name: string;
+    provider: "gemini" | "anthropic";
+}
+
+interface AnalysisResult {
+    title: string;
+    previewText: string;
+    imageCount: number;
+    blockCount: number;
+    linkCount: number;
+    summary: string;
+}
+
+export default function MigratePage() {
+    const [htmlFile, setHtmlFile] = useState<File | null>(null);
+    const [assetFiles, setAssetFiles] = useState<File[]>([]);
+    const [templateName, setTemplateName] = useState("");
+    const [isDragging, setIsDragging] = useState(false);
+    const [isAnalyzing, setIsAnalyzing] = useState(false);
+    const [isConverting, setIsConverting] = useState(false);
+    const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
+    const [generatedHtml, setGeneratedHtml] = useState<string | null>(null);
+    const [viewMode, setViewMode] = useState<ViewMode>("preview");
+    const [error, setError] = useState<string | null>(null);
+    const [saved, setSaved] = useState(false);
+    const [aiMode, setAiMode] = useState<AiMode>("both");
+    const [availableModels, setAvailableModels] = useState<ModelInfo[]>([]);
+    const [selectedGeminiModel, setSelectedGeminiModel] = useState("");
+    const [selectedClaudeModel, setSelectedClaudeModel] = useState("");
+    const [loadingModels, setLoadingModels] = useState(true);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const assetInputRef = useRef<HTMLInputElement>(null);
+
+    // Fetch available models on mount
+    useEffect(() => {
+        async function fetchModels() {
+            try {
+                const res = await fetch("/api/models");
+                const data = await res.json();
+                const models: ModelInfo[] = data.models || [];
+                setAvailableModels(models);
+                // Auto-select first of each provider
+                const firstGemini = models.find((m: ModelInfo) => m.provider === "gemini");
+                const firstClaude = models.find((m: ModelInfo) => m.provider === "anthropic");
+                if (firstGemini) setSelectedGeminiModel(firstGemini.id);
+                if (firstClaude) setSelectedClaudeModel(firstClaude.id);
+            } catch {
+                console.error("Failed to fetch models");
+            } finally {
+                setLoadingModels(false);
+            }
+        }
+        fetchModels();
+    }, []);
+
+    const geminiModels = availableModels.filter((m) => m.provider === "gemini");
+    const claudeModels = availableModels.filter((m) => m.provider === "anthropic");
+
+    const handleDragOver = useCallback((e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(true);
+    }, []);
+
+    const handleDragLeave = useCallback((e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(false);
+    }, []);
+
+    const handleDrop = useCallback(async (e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(false);
+
+        const files = Array.from(e.dataTransfer.files);
+        const html = files.find((f) => f.name.endsWith(".html"));
+        const assets = files.filter(
+            (f) =>
+                f.name.endsWith(".png") ||
+                f.name.endsWith(".jpg") ||
+                f.name.endsWith(".jpeg") ||
+                f.name.endsWith(".gif")
+        );
+
+        if (html) {
+            setHtmlFile(html);
+            setTemplateName(html.name.replace(".html", ""));
+            const text = await html.text();
+            await runAnalysis(text);
+        }
+        if (assets.length > 0) {
+            setAssetFiles((prev) => [...prev, ...assets]);
+        }
+    }, []);
+
+    const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setHtmlFile(file);
+            setTemplateName(file.name.replace(".html", ""));
+            const text = await file.text();
+            await runAnalysis(text);
+        }
+    };
+
+    const handleAssetSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = Array.from(e.target.files || []);
+        setAssetFiles((prev) => [...prev, ...files]);
+    };
+
+    const runAnalysis = async (htmlContent: string) => {
+        setIsAnalyzing(true);
+        setError(null);
+        try {
+            const result = await analyzeEmail(htmlContent);
+            setAnalysis(result);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "Analysis failed");
+        } finally {
+            setIsAnalyzing(false);
+        }
+    };
+
+    const handleConvert = async () => {
+        if (!htmlFile) return;
+        setIsConverting(true);
+        setError(null);
+        setSaved(false);
+
+        try {
+            const formData = new FormData();
+            formData.append("htmlFile", htmlFile);
+            formData.append("templateName", templateName || "Untitled Template");
+            formData.append("aiMode", aiMode);
+            formData.append("geminiModel", selectedGeminiModel);
+            formData.append("claudeModel", selectedClaudeModel);
+            assetFiles.forEach((f, i) => formData.append(`asset_${i}`, f));
+
+            const result = await convertEmail(formData);
+
+            if (result.success && result.generatedHtml) {
+                setGeneratedHtml(result.generatedHtml);
+                setSaved(true);
+            } else {
+                setError(result.error || "Conversion failed");
+            }
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "Conversion failed");
+        } finally {
+            setIsConverting(false);
+        }
+    };
+
+    const handleDownload = () => {
+        if (!generatedHtml) return;
+        const blob = new Blob([generatedHtml], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${templateName || "email"}-converted.html`;
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
+    const resetState = () => {
+        setHtmlFile(null);
+        setAssetFiles([]);
+        setTemplateName("");
+        setAnalysis(null);
+        setGeneratedHtml(null);
+        setError(null);
+        setSaved(false);
+    };
+
+    return (
+        <div className="p-8 animate-fade-in">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6">
+                <div>
+                    <h1 className="text-2xl font-bold text-[var(--foreground)]">Migration Workspace</h1>
+                    <p className="text-sm text-[var(--muted)] mt-1">
+                        Upload Mailchimp HTML and assets to generate a clean HTML email.
+                    </p>
+                </div>
+                {generatedHtml && (
+                    <div className="flex items-center gap-3">
+                        <button
+                            onClick={handleDownload}
+                            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-colors"
+                        >
+                            <Download className="w-4 h-4" />
+                            Download HTML
+                        </button>
+                        <button
+                            onClick={resetState}
+                            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-sm font-medium text-white hover:bg-[var(--primary-hover)] transition-colors"
+                        >
+                            New Migration
+                        </button>
+                    </div>
+                )}
+            </div>
+
+            {error && (
+                <div className="mb-6 flex items-center gap-3 p-4 rounded-lg bg-[var(--danger)]/10 border border-[var(--danger)]/20">
+                    <AlertCircle className="w-5 h-5 text-[var(--danger)] shrink-0" />
+                    <p className="text-sm text-[var(--danger)]">{error}</p>
+                    <button onClick={() => setError(null)} className="ml-auto">
+                        <X className="w-4 h-4 text-[var(--danger)]" />
+                    </button>
+                </div>
+            )}
+
+            {!htmlFile && !generatedHtml ? (
+                /* Upload Zone */
+                <div
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                    className={`relative rounded-2xl border-2 border-dashed p-16 text-center transition-all duration-300
+            ${isDragging ? "drop-zone-active" : "border-[var(--border)] hover:border-[var(--muted)]"}`}
+                >
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[var(--primary)]/10 flex items-center justify-center">
+                        <Upload className="w-8 h-8 text-[var(--primary)]" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">
+                        Drag & Drop Source Files
+                    </h3>
+                    <p className="text-sm text-[var(--muted)] mb-6 max-w-md mx-auto">
+                        Drop your Mailchimp HTML export and image assets here, or click to browse.
+                        Supports <code className="text-[var(--accent)]">.html</code>,{" "}
+                        <code className="text-[var(--accent)]">.png</code>,{" "}
+                        <code className="text-[var(--accent)]">.jpg</code> files.
+                    </p>
+                    <div className="flex items-center justify-center gap-4">
+                        <button
+                            onClick={() => fileInputRef.current?.click()}
+                            className="px-5 py-2.5 rounded-lg bg-[var(--primary)] text-sm font-medium text-white hover:bg-[var(--primary-hover)] transition-colors"
+                        >
+                            <span className="flex items-center gap-2">
+                                <FileText className="w-4 h-4" />
+                                Select HTML File
+                            </span>
+                        </button>
+                        <button
+                            onClick={() => assetInputRef.current?.click()}
+                            className="px-5 py-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-sm font-medium text-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-colors"
+                        >
+                            <span className="flex items-center gap-2">
+                                <ImageIcon className="w-4 h-4" />
+                                Add Images
+                            </span>
+                        </button>
+                    </div>
+                    <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept=".html,.htm"
+                        className="hidden"
+                        onChange={handleFileSelect}
+                    />
+                    <input
+                        ref={assetInputRef}
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        className="hidden"
+                        onChange={handleAssetSelect}
+                    />
+                </div>
+            ) : !generatedHtml ? (
+                /* Analysis & Convert */
+                <div className="grid grid-cols-5 gap-6">
+                    {/* Left: Source Info */}
+                    <div className="col-span-2 space-y-4">
+                        {/* File Info */}
+                        <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5">
+                            <h3 className="text-sm font-semibold text-[var(--foreground)] mb-3">Source File</h3>
+                            <div className="flex items-center gap-3 p-3 rounded-lg bg-[var(--background)]">
+                                <FileText className="w-5 h-5 text-[var(--primary)]" />
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-[var(--foreground)] truncate">
+                                        {htmlFile?.name}
+                                    </p>
+                                    <p className="text-xs text-[var(--muted)]">
+                                        {((htmlFile?.size || 0) / 1024).toFixed(1)} KB
+                                    </p>
+                                </div>
+                                <button
+                                    onClick={resetState}
+                                    className="text-[var(--muted)] hover:text-[var(--danger)]"
+                                >
+                                    <X className="w-4 h-4" />
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Template Name */}
+                        <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5">
+                            <label className="text-sm font-semibold text-[var(--foreground)] mb-3 block">
+                                Template Name
+                            </label>
+                            <input
+                                type="text"
+                                value={templateName}
+                                onChange={(e) => setTemplateName(e.target.value)}
+                                className="w-full px-3 py-2 rounded-lg bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--primary)]"
+                                placeholder="My Email Template"
+                            />
+                        </div>
+
+                        {/* AI Model Selector */}
+                        <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Cpu className="w-4 h-4 text-[var(--primary)]" />
+                                <label className="text-sm font-semibold text-[var(--foreground)]">
+                                    AI Pipeline
+                                </label>
+                            </div>
+
+                            {/* Mode selector */}
+                            <div className="flex gap-1 p-1 rounded-lg bg-[var(--background)] mb-4">
+                                {(["both", "gemini", "claude"] as const).map((mode) => (
+                                    <button
+                                        key={mode}
+                                        onClick={() => setAiMode(mode)}
+                                        className={`flex-1 px-3 py-1.5 rounded-md text-xs font-medium transition-colors
+                                            ${aiMode === mode
+                                                ? "bg-[var(--primary)] text-white"
+                                                : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+                                    >
+                                        {mode === "both" ? "Both" : mode === "gemini" ? "Gemini" : "Claude"}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {/* Gemini model dropdown */}
+                            {(aiMode === "both" || aiMode === "gemini") && (
+                                <div className="mb-3">
+                                    <label className="text-[10px] text-[var(--muted)] uppercase tracking-wider mb-1 block">
+                                        {aiMode === "both" ? "Analysis Model (Gemini)" : "Gemini Model"}
+                                    </label>
+                                    <div className="relative">
+                                        <select
+                                            value={selectedGeminiModel}
+                                            onChange={(e) => setSelectedGeminiModel(e.target.value)}
+                                            className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--primary)] cursor-pointer"
+                                        >
+                                            {loadingModels ? (
+                                                <option>Loading models...</option>
+                                            ) : geminiModels.length === 0 ? (
+                                                <option>No Gemini models found — check API key</option>
+                                            ) : (
+                                                geminiModels.map((m) => (
+                                                    <option key={m.id} value={m.id}>{m.name}</option>
+                                                ))
+                                            )}
+                                        </select>
+                                        <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--muted)] pointer-events-none" />
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Claude model dropdown */}
+                            {(aiMode === "both" || aiMode === "claude") && (
+                                <div>
+                                    <label className="text-[10px] text-[var(--muted)] uppercase tracking-wider mb-1 block">
+                                        {aiMode === "both" ? "Generation Model (Claude)" : "Claude Model"}
+                                    </label>
+                                    <div className="relative">
+                                        <select
+                                            value={selectedClaudeModel}
+                                            onChange={(e) => setSelectedClaudeModel(e.target.value)}
+                                            className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-[var(--background)] border border-[var(--border)] text-sm text-[var(--foreground)] focus:outline-none focus:border-[var(--primary)] cursor-pointer"
+                                        >
+                                            {loadingModels ? (
+                                                <option>Loading models...</option>
+                                            ) : claudeModels.length === 0 ? (
+                                                <option>No Claude models found — check API key</option>
+                                            ) : (
+                                                claudeModels.map((m) => (
+                                                    <option key={m.id} value={m.id}>{m.name}</option>
+                                                ))
+                                            )}
+                                        </select>
+                                        <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--muted)] pointer-events-none" />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Assets */}
+                        <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5">
+                            <div className="flex items-center justify-between mb-3">
+                                <h3 className="text-sm font-semibold text-[var(--foreground)]">
+                                    Assets ({assetFiles.length})
+                                </h3>
+                                <button
+                                    onClick={() => assetInputRef.current?.click()}
+                                    className="text-xs text-[var(--primary)] hover:underline"
+                                >
+                                    + Add
+                                </button>
+                            </div>
+                            {assetFiles.length > 0 ? (
+                                <div className="space-y-2 max-h-48 overflow-y-auto">
+                                    {assetFiles.map((f, i) => (
+                                        <div
+                                            key={i}
+                                            className="flex items-center gap-2 p-2 rounded-lg bg-[var(--background)]"
+                                        >
+                                            <ImageIcon className="w-4 h-4 text-[var(--accent)]" />
+                                            <span className="text-xs text-[var(--foreground)] truncate flex-1">
+                                                {f.name}
+                                            </span>
+                                            <button
+                                                onClick={() => setAssetFiles((prev) => prev.filter((_, j) => j !== i))}
+                                                className="text-[var(--muted)] hover:text-[var(--danger)]"
+                                            >
+                                                <X className="w-3 h-3" />
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className="text-xs text-[var(--muted)]">
+                                    No assets added. The AI will use any images referenced in the HTML.
+                                </p>
+                            )}
+                            <input
+                                ref={assetInputRef}
+                                type="file"
+                                accept="image/*"
+                                multiple
+                                className="hidden"
+                                onChange={handleAssetSelect}
+                            />
+                        </div>
+
+                        {/* Convert Button */}
+                        <button
+                            onClick={handleConvert}
+                            disabled={isConverting || !htmlFile}
+                            className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--primary)] text-sm font-semibold text-white hover:bg-[var(--primary-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-all animate-pulse-glow"
+                        >
+                            {isConverting ? (
+                                <>
+                                    <Loader2 className="w-4 h-4 animate-spin" />
+                                    Converting with AI...
+                                </>
+                            ) : (
+                                <>
+                                    <Sparkles className="w-4 h-4" />
+                                    Convert to HTML Email
+                                </>
+                            )}
+                        </button>
+                    </div>
+
+                    {/* Right: Analysis Panel */}
+                    <div className="col-span-3">
+                        <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 h-full">
+                            <div className="flex items-center gap-2 mb-4">
+                                <Sparkles className="w-4 h-4 text-[var(--primary)]" />
+                                <h3 className="text-sm font-semibold text-[var(--foreground)]">AI Analysis</h3>
+                                {isAnalyzing && <Loader2 className="w-3 h-3 animate-spin text-[var(--muted)]" />}
+                            </div>
+
+                            {analysis ? (
+                                <div className="space-y-4">
+                                    {/* Title */}
+                                    <div>
+                                        <p className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">
+                                            Detected Title
+                                        </p>
+                                        <p className="text-sm font-medium text-[var(--foreground)]">{analysis.title}</p>
+                                    </div>
+
+                                    {/* Stats */}
+                                    <div className="grid grid-cols-3 gap-3">
+                                        <MiniStat label="Content Blocks" value={analysis.blockCount} />
+                                        <MiniStat label="Images" value={analysis.imageCount} />
+                                        <MiniStat label="Links" value={analysis.linkCount} />
+                                    </div>
+
+                                    {/* Preview Text */}
+                                    {analysis.previewText && (
+                                        <div>
+                                            <p className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">
+                                                Preview Text
+                                            </p>
+                                            <p className="text-xs text-[var(--foreground)] bg-[var(--background)] p-2 rounded-lg">
+                                                {analysis.previewText}
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {/* Content Summary */}
+                                    <div>
+                                        <p className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">
+                                            Content Map
+                                        </p>
+                                        <pre className="text-xs text-[var(--foreground)] bg-[var(--background)] p-3 rounded-lg overflow-auto max-h-64 font-mono whitespace-pre-wrap">
+                                            {analysis.summary}
+                                        </pre>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center justify-center py-12 text-center">
+                                    <FileText className="w-8 h-8 text-[var(--muted)] mb-3" />
+                                    <p className="text-sm text-[var(--muted)]">
+                                        Upload an HTML file to see the analysis
+                                    </p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                /* Result View */
+                <div className="space-y-4">
+                    {/* Saved Banner */}
+                    {saved && (
+                        <div className="flex items-center gap-3 p-4 rounded-lg bg-[var(--success)]/10 border border-[var(--success)]/20">
+                            <CheckCircle2 className="w-5 h-5 text-[var(--success)]" />
+                            <p className="text-sm text-[var(--success)] font-medium">
+                                Template saved to Supabase successfully!
+                            </p>
+                        </div>
+                    )}
+
+                    {/* View Mode Tabs */}
+                    <div className="flex items-center gap-1 p-1 rounded-lg bg-[var(--surface)] border border-[var(--border)] w-fit">
+                        {[
+                            { key: "preview" as ViewMode, label: "Preview", icon: Eye },
+                            { key: "code" as ViewMode, label: "HTML Code", icon: Code },
+                            { key: "source" as ViewMode, label: "Original", icon: FileText },
+                        ].map((tab) => (
+                            <button
+                                key={tab.key}
+                                onClick={() => setViewMode(tab.key)}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors
+                  ${viewMode === tab.key ? "bg-[var(--primary)] text-white" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+                            >
+                                <tab.icon className="w-4 h-4" />
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Content Area */}
+                    <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+                        {viewMode === "preview" ? (
+                            <div className="bg-white">
+                                <iframe
+                                    srcDoc={generatedHtml}
+                                    className="w-full min-h-[700px] border-0"
+                                    title="Email Preview"
+                                    sandbox="allow-same-origin"
+                                />
+                            </div>
+                        ) : viewMode === "code" ? (
+                            <pre className="p-6 text-xs text-[var(--foreground)] overflow-auto max-h-[700px] code-editor">
+                                {generatedHtml}
+                            </pre>
+                        ) : (
+                            <div className="bg-white">
+                                <iframe
+                                    srcDoc={htmlFile ? undefined : ""}
+                                    src={htmlFile ? URL.createObjectURL(htmlFile) : undefined}
+                                    className="w-full min-h-[700px] border-0"
+                                    title="Original Source"
+                                    sandbox="allow-same-origin"
+                                />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
+function MiniStat({ label, value }: { label: string; value: number }) {
+    return (
+        <div className="p-3 rounded-lg bg-[var(--background)]">
+            <p className="text-lg font-bold text-[var(--foreground)]">{value}</p>
+            <p className="text-[10px] text-[var(--muted)] uppercase tracking-wider">{label}</p>
+        </div>
+    );
+}
+</file>
+
+<file path="src/app/actions.ts">
+"use server";
+
+import { getSupabaseClient, MailchimpTemplate } from "@/lib/supabase";
+import { convertMailchimpToEmail } from "@/lib/ai/email-generator";
+import { parseMailchimpHtml, generateContentSummary } from "@/lib/parsers/mailchimp-parser";
+import { revalidatePath } from "next/cache";
+import { readdir } from "fs/promises";
+import path from "path";
+
+// ─── Image Library Scanner ────────────────────────────────
+
+async function getLibraryImages(): Promise<string[]> {
+    const samplesDir = path.join(process.cwd(), "samples");
+    try {
+        return await collectImageFiles(samplesDir);
+    } catch {
+        return [];
+    }
+}
+
+async function collectImageFiles(dir: string): Promise<string[]> {
+    const entries = await readdir(dir, { withFileTypes: true });
+    const images: string[] = [];
+    for (const entry of entries) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            images.push(...(await collectImageFiles(full)));
+        } else {
+            const ext = path.extname(entry.name).toLowerCase();
+            if ([".png", ".jpg", ".jpeg", ".gif"].includes(ext)) {
+                images.push(entry.name);
+            }
+        }
+    }
+    return images;
+}
+
+// ─── Template CRUD ────────────────────────────────────────
+
+export async function getTemplates(): Promise<MailchimpTemplate[]> {
+    const supabase = getSupabaseClient();
+    if (!supabase) return [];
+
+    const { data, error } = await supabase
+        .from("mailchimp_templates")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        console.error("getTemplates error:", error.message);
+        return [];
+    }
+    return data ?? [];
+}
+
+export async function getTemplate(id: string): Promise<MailchimpTemplate | null> {
+    const supabase = getSupabaseClient();
+    if (!supabase) return null;
+
+    const { data, error } = await supabase
+        .from("mailchimp_templates")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+    if (error) return null;
+    return data;
+}
+
+export async function saveTemplate(template: {
+    name: string;
+    source_html: string;
+    generated_html: string;
+    assets: { filename: string; url: string; slot: string }[];
+    status: string;
+}): Promise<MailchimpTemplate | null> {
+    const supabase = getSupabaseClient();
+    if (!supabase) {
+        console.warn("Supabase not configured, skipping save");
+        return null;
+    }
+
+    const { data, error } = await supabase
+        .from("mailchimp_templates")
+        .insert(template)
+        .select()
+        .single();
+
+    if (error) throw new Error(error.message);
+    revalidatePath("/");
+    return data;
+}
+
+export async function updateTemplate(
+    id: string,
+    updates: Partial<MailchimpTemplate>
+): Promise<MailchimpTemplate | null> {
+    const supabase = getSupabaseClient();
+    if (!supabase) return null;
+
+    const { data, error } = await supabase
+        .from("mailchimp_templates")
+        .update({ ...updates, updated_at: new Date().toISOString() })
+        .eq("id", id)
+        .select()
+        .single();
+
+    if (error) throw new Error(error.message);
+    revalidatePath("/");
+    return data;
+}
+
+export async function deleteTemplate(id: string): Promise<void> {
+    const supabase = getSupabaseClient();
+    if (!supabase) return;
+
+    const { error } = await supabase
+        .from("mailchimp_templates")
+        .delete()
+        .eq("id", id);
+
+    if (error) throw new Error(error.message);
+    revalidatePath("/");
+}
+
+// ─── Conversion Pipeline ──────────────────────────────────
+
+export async function convertEmail(formData: FormData): Promise<{
+    success: boolean;
+    generatedHtml?: string;
+    contentMap?: string;
+    templateId?: string;
+    error?: string;
+}> {
+    try {
+        const htmlFile = formData.get("htmlFile") as File;
+        const templateName = (formData.get("templateName") as string) || "Untitled Template";
+
+        if (!htmlFile) {
+            return { success: false, error: "No HTML file provided" };
+        }
+
+        const htmlContent = await htmlFile.text();
+        const aiMode = (formData.get("aiMode") as string) || "both";
+        const geminiModel = (formData.get("geminiModel") as string) || "";
+        const claudeModel = (formData.get("claudeModel") as string) || "";
+
+        // Get asset filenames from form data
+        const uploadedAssets: string[] = [];
+        for (const [key, value] of formData.entries()) {
+            if (key.startsWith("asset_") && value instanceof File) {
+                uploadedAssets.push(value.name);
+            }
+        }
+
+        // Auto-scan image library and merge with uploaded assets
+        const libraryImages = await getLibraryImages();
+        const allAssets = [...new Set([...uploadedAssets, ...libraryImages])];
+
+        // Run the AI conversion pipeline
+        const { generatedHtml, contentMap } = await convertMailchimpToEmail(
+            htmlContent,
+            allAssets,
+            aiMode as "both" | "gemini" | "claude",
+            geminiModel,
+            claudeModel
+        );
+
+        // Save to Supabase (gracefully skip if not configured)
+        let templateId: string | undefined;
+        try {
+            const template = await saveTemplate({
+                name: templateName,
+                source_html: htmlContent,
+                generated_html: generatedHtml,
+                assets: allAssets.map((f: string) => ({ filename: f, url: `/api/assets/${f}`, slot: "" })),
+                status: "completed",
+            });
+            templateId = template?.id;
+        } catch (saveErr) {
+            console.warn("Failed to save to Supabase:", saveErr);
+        }
+
+        return {
+            success: true,
+            generatedHtml,
+            contentMap,
+            templateId,
+        };
+    } catch (err) {
+        const message = err instanceof Error ? err.message : "Unknown error";
+        return { success: false, error: message };
+    }
+}
+
+// ─── Analysis (preview without saving) ────────────────────
+
+export async function analyzeEmail(
+    htmlContent: string
+): Promise<{
+    title: string;
+    previewText: string;
+    imageCount: number;
+    blockCount: number;
+    linkCount: number;
+    summary: string;
+}> {
+    const parsed = parseMailchimpHtml(htmlContent);
+    const summary = generateContentSummary(parsed);
+
+    return {
+        title: parsed.title,
+        previewText: parsed.previewText,
+        imageCount: parsed.images.length,
+        blockCount: parsed.blocks.length,
+        linkCount: parsed.links.length,
+        summary,
+    };
+}
+</file>
+
+<file path="src/app/page.tsx">
+import {
+  Zap,
+  ImageIcon,
+  Activity,
+  ArrowRight,
+  Clock,
+  CheckCircle2,
+  XCircle,
+  Upload,
+} from "lucide-react";
+import Link from "next/link";
+import { getTemplates } from "./actions";
+
+export default async function DashboardPage() {
+  let templates: Awaited<ReturnType<typeof getTemplates>> = [];
+  try {
+    templates = await getTemplates();
+  } catch {
+    // Supabase not configured yet, graceful fallback
+  }
+
+  const completed = templates.filter((t) => t.status === "completed").length;
+  const totalImages = templates.reduce((sum, t) => sum + (t.assets?.length || 0), 0);
+
+  return (
+    <div className="p-8 animate-fade-in">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-[var(--foreground)]">Dashboard Overview</h1>
+        <p className="text-sm text-[var(--muted)] mt-1">
+          Manage your email template migrations and view system status.
+        </p>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-3 gap-6 mb-8">
+        <StatCard
+          icon={<Zap className="w-5 h-5" />}
+          label="Total Migrations"
+          value={templates.length.toString()}
+          color="var(--primary)"
+        />
+        <StatCard
+          icon={<ImageIcon className="w-5 h-5" />}
+          label="Images Processed"
+          value={totalImages.toString()}
+          color="var(--accent)"
+        />
+        <StatCard
+          icon={<Activity className="w-5 h-5" />}
+          label="Success Rate"
+          value={templates.length > 0 ? `${Math.round((completed / templates.length) * 100)}%` : "—"}
+          color="var(--success)"
+        />
+      </div>
+
+      {/* Action Cards */}
+      <div className="grid grid-cols-2 gap-6 mb-8">
+        {/* Start New Migration */}
+        <Link
+          href="/migrate"
+          className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 hover:border-[var(--primary)] transition-all duration-300"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="relative">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center">
+              <Upload className="w-6 h-6 text-[var(--primary)]" />
+            </div>
+            <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">
+              Start New Migration
+            </h3>
+            <p className="text-sm text-[var(--muted)] mb-4">
+              Import a template from Mailchimp or upload raw HTML to begin the AI-powered
+              conversion process.
+            </p>
+            <div className="flex items-center gap-2 text-sm font-medium text-[var(--primary)]">
+              Begin migration
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </Link>
+
+        {/* Image Library */}
+        <Link
+          href="/library"
+          className="group relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 hover:border-[var(--accent)] transition-all duration-300"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="relative">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center">
+              <ImageIcon className="w-6 h-6 text-[var(--accent)]" />
+            </div>
+            <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">
+              Image Library
+            </h3>
+            <p className="text-sm text-[var(--muted)] mb-4">
+              Browse and manage uploaded images. Map assets to template slots for precise
+              placement.
+            </p>
+            <div className="flex items-center gap-2 text-sm font-medium text-[var(--accent)]">
+              View library
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </Link>
+      </div>
+
+      {/* Recent Migrations Table */}
+      <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden">
+        <div className="px-6 py-4 border-b border-[var(--border)] flex items-center justify-between">
+          <h3 className="font-semibold text-[var(--foreground)]">Recent Migrations</h3>
+          <Link
+            href="/templates"
+            className="text-xs text-[var(--primary)] hover:underline"
+          >
+            View all →
+          </Link>
+        </div>
+        {templates.length === 0 ? (
+          <div className="px-6 py-12 text-center">
+            <Zap className="w-8 h-8 text-[var(--muted)] mx-auto mb-3" />
+            <p className="text-sm text-[var(--muted)]">
+              No migrations yet. Start by uploading a Mailchimp template.
+            </p>
+          </div>
+        ) : (
+          <table className="w-full">
+            <thead>
+              <tr className="text-xs text-[var(--muted)] uppercase tracking-wider">
+                <th className="text-left px-6 py-3 font-medium">Template</th>
+                <th className="text-left px-6 py-3 font-medium">Status</th>
+                <th className="text-left px-6 py-3 font-medium">Assets</th>
+                <th className="text-left px-6 py-3 font-medium">Created</th>
+              </tr>
+            </thead>
+            <tbody>
+              {templates.slice(0, 8).map((t) => (
+                <tr
+                  key={t.id}
+                  className="border-t border-[var(--border)] hover:bg-[var(--surface-hover)] transition-colors cursor-pointer"
+                  onClick={undefined}
+                >
+                  <td className="px-6 py-3 text-sm font-medium text-[var(--foreground)]">
+                    <Link href={`/templates/${t.id}`} className="hover:text-[var(--primary)] transition-colors">
+                      {t.name}
+                    </Link>
+                  </td>
+                  <td className="px-6 py-3">
+                    <Link href={`/templates/${t.id}`}>
+                      <StatusBadge status={t.status} />
+                    </Link>
+                  </td>
+                  <td className="px-6 py-3 text-sm text-[var(--muted)]">
+                    <Link href={`/templates/${t.id}`}>
+                      {t.assets?.length || 0} files
+                    </Link>
+                  </td>
+                  <td className="px-6 py-3 text-sm text-[var(--muted)]">
+                    <Link href={`/templates/${t.id}`} className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5" />
+                      {new Date(t.created_at).toLocaleDateString()}
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function StatCard({
+  icon,
+  label,
+  value,
+  color,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  color: string;
+}) {
+  return (
+    <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5">
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-xs text-[var(--muted)] uppercase tracking-wider font-medium">
+          {label}
+        </span>
+        <div
+          className="w-8 h-8 rounded-lg flex items-center justify-center"
+          style={{ backgroundColor: `${color}15`, color }}
+        >
+          {icon}
+        </div>
+      </div>
+      <p className="text-3xl font-bold text-[var(--foreground)]">{value}</p>
+    </div>
+  );
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const config = {
+    completed: { icon: CheckCircle2, color: "var(--success)", label: "Completed" },
+    draft: { icon: Clock, color: "var(--warning)", label: "Draft" },
+    failed: { icon: XCircle, color: "var(--danger)", label: "Failed" },
+  }[status] || { icon: Clock, color: "var(--muted)", label: status };
+
+  const Icon = config.icon;
+
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
+      style={{
+        backgroundColor: `${config.color}15`,
+        color: config.color,
+      }}
+    >
+      <Icon className="w-3 h-3" />
+      {config.label}
+    </span>
+  );
+}
+</file>
+
+<file path="src/lib/ai/email-generator.ts">
+import { GoogleGenAI } from "@google/genai";
+import Anthropic from "@anthropic-ai/sdk";
+import { ParsedEmail, generateContentSummary } from "../parsers/mailchimp-parser";
+
+// Lazy-initialized to avoid build-time errors when env vars aren't set
+function getGemini() {
+    return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+}
+
+function getAnthropic() {
+    return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! });
+}
+
+/**
+ * Step 1: Use Gemini to analyze Mailchimp HTML and create a semantic content map
+ */
+async function analyzeWithGemini(
+    parsed: ParsedEmail,
+    assetFilenames: string[],
+    modelId: string = "gemini-2.5-pro"
+): Promise<string> {
+    const contentSummary = generateContentSummary(parsed);
+
+    const response = await getGemini().models.generateContent({
+        model: modelId,
+        contents: [
+            {
+                role: "user",
+                parts: [
+                    {
+                        text: `You are an email template migration expert. Analyze the following Mailchimp email export and create a detailed content map for converting it into a clean HTML email.
+
+## Source Email Content:
+${contentSummary}
+
+## Available Asset Files:
+${assetFilenames.map((f, i) => `${i + 1}. ${f}`).join("\n")}
+
+## Original HTML (first 3000 chars for structure reference):
+\`\`\`html
+${parsed.rawHtml.substring(0, 3000)}
+\`\`\`
+
+## Instructions:
+Create a JSON content map with this exact structure:
+{
+  "subject": "email subject line",
+  "previewText": "preview text",
+  "sections": [
+    {
+      "type": "hero_image" | "text" | "image_with_link" | "cta_button" | "social_icons" | "footer" | "divider" | "logo",
+      "content": "text content or description",
+      "image": "matching filename from asset files or null",
+      "link": "URL or null",
+      "style": { "backgroundColor": "#hex", "textColor": "#hex", "alignment": "center|left|right" }
+    }
+  ],
+  "globalStyle": {
+    "backgroundColor": "#hex",
+    "contentWidth": 660,
+    "fontFamily": "font name",
+    "primaryColor": "#hex"
+  }
+}
+
+Be precise in matching images to their correct positions. Map each image filename from the asset list to the correct section based on context clues in the content.`,
+                    },
+                ],
+            },
+        ],
+    });
+
+    return response?.text ?? "";
+}
+
+/**
+ * Step 2: Use Claude to generate clean, portable HTML email code
+ */
+async function generateWithClaude(
+    contentMap: string,
+    originalHtml: string,
+    assetFilenames: string[],
+    modelId: string = "claude-sonnet-4-20250514"
+): Promise<string> {
+    const response = await getAnthropic().messages.create({
+        model: modelId,
+        max_tokens: 8192,
+        messages: [
+            {
+                role: "user",
+                content: `You are an expert HTML email developer. Generate a clean, portable HTML email based on the content map and original source below.
+
+## Content Map (from analysis):
+${contentMap}
+
+## Available Image Assets:
+${assetFilenames.map((f) => `- /api/assets/${f}`).join("\n")}
+
+## Original HTML (for style reference, first 4000 chars):
+\`\`\`html
+${originalHtml.substring(0, 4000)}
+\`\`\`
+
+## REQUIREMENTS:
+1. Use TABLE-based layout (for email client compatibility)
+2. ALL styles must be INLINE (no <style> tags in body)
+3. Max content width: 660px, centered
+4. Images must use the /api/assets/ paths provided above
+5. Include proper email DOCTYPE and meta tags
+6. Support dark mode with meta color-scheme
+7. Include MSO conditionals for Outlook compatibility
+8. Buttons should use VML for Outlook + standard for others
+9. Preserve ALL original links and CTAs exactly
+10. Match the original layout as closely as possible
+11. Include an unsubscribe link placeholder: {{unsubscribe_url}}
+12. Include a view-in-browser placeholder: {{view_in_browser_url}}
+
+## OUTPUT:
+Return ONLY the complete HTML email code. No markdown, no explanations, just the HTML starting with <!DOCTYPE html>.`,
+            },
+        ],
+    });
+
+    const textBlock = response.content.find((b: { type: string }) => b.type === "text") as { type: string; text: string } | undefined;
+    return textBlock?.text ?? "";
+}
+
+/**
+ * Use Gemini for full generation (analyze + generate in one shot)
+ */
+async function generateFullWithGemini(
+    parsed: ParsedEmail,
+    assetFilenames: string[],
+    modelId: string = "gemini-2.5-pro"
+): Promise<string> {
+    const contentSummary = generateContentSummary(parsed);
+    const response = await getGemini().models.generateContent({
+        model: modelId,
+        contents: [{
+            role: "user",
+            parts: [{
+                text: `You are an expert HTML email developer. Convert this Mailchimp email into a clean, portable HTML email.
+
+## Source Email Content:
+${contentSummary}
+
+## Available Image Assets:
+${assetFilenames.map((f) => `- /api/assets/${f}`).join("\n")}
+
+## Original HTML (first 4000 chars):
+\`\`\`html
+${parsed.rawHtml.substring(0, 4000)}
+\`\`\`
+
+## REQUIREMENTS:
+1. Use TABLE-based layout for email client compatibility
+2. ALL styles must be INLINE
+3. Max content width: 660px, centered
+4. Images use /api/assets/ paths
+5. Include proper email DOCTYPE and meta tags
+6. Support dark mode with meta color-scheme
+7. Include MSO conditionals for Outlook
+8. Buttons use VML for Outlook + standard for others
+9. Preserve ALL original links and CTAs
+10. Match the original layout closely
+11. Include {{unsubscribe_url}} and {{view_in_browser_url}} placeholders
+
+Return ONLY the complete HTML email code starting with <!DOCTYPE html>.`,
+            }],
+        }],
+    });
+    return response?.text ?? "";
+}
+
+/**
+ * Use Claude for full generation (analyze + generate in one shot)
+ */
+async function generateFullWithClaude(
+    parsed: ParsedEmail,
+    assetFilenames: string[],
+    modelId: string = "claude-sonnet-4-20250514"
+): Promise<string> {
+    const contentSummary = generateContentSummary(parsed);
+    const response = await getAnthropic().messages.create({
+        model: modelId,
+        max_tokens: 8192,
+        messages: [{
+            role: "user",
+            content: `You are an expert HTML email developer. Convert this Mailchimp email into a clean, portable HTML email.
+
+## Source Email Content:
+${contentSummary}
+
+## Available Image Assets:
+${assetFilenames.map((f) => `- /api/assets/${f}`).join("\n")}
+
+## Original HTML (first 4000 chars):
+\`\`\`html
+${parsed.rawHtml.substring(0, 4000)}
+\`\`\`
+
+## REQUIREMENTS:
+1. Use TABLE-based layout for email client compatibility
+2. ALL styles must be INLINE
+3. Max content width: 660px, centered
+4. Images use /api/assets/ paths
+5. Include proper email DOCTYPE and meta tags
+6. Support dark mode with meta color-scheme
+7. Include MSO conditionals for Outlook
+8. Buttons use VML for Outlook + standard for others
+9. Preserve ALL original links and CTAs
+10. Match the original layout closely
+11. Include {{unsubscribe_url}} and {{view_in_browser_url}} placeholders
+
+Return ONLY the complete HTML email code starting with <!DOCTYPE html>.`,
+        }],
+    });
+    const textBlock = response.content.find((b: { type: string }) => b.type === "text") as { type: string; text: string } | undefined;
+    return textBlock?.text ?? "";
+}
+
+/**
+ * Main pipeline: Parse → Generate with selected model(s)
+ */
+export async function convertMailchimpToEmail(
+    html: string,
+    assetFilenames: string[],
+    mode: "both" | "gemini" | "claude" = "both",
+    geminiModel: string = "gemini-2.5-pro",
+    claudeModel: string = "claude-sonnet-4-20250514"
+): Promise<{ generatedHtml: string; contentMap: string }> {
+    const { parseMailchimpHtml } = await import("../parsers/mailchimp-parser");
+    const parsed = parseMailchimpHtml(html);
+
+    let rawOutput: string;
+    let contentMap = "";
+
+    if (mode === "gemini") {
+        rawOutput = await generateFullWithGemini(parsed, assetFilenames, geminiModel);
+    } else if (mode === "claude") {
+        rawOutput = await generateFullWithClaude(parsed, assetFilenames, claudeModel);
+    } else {
+        const contentMapRaw = await analyzeWithGemini(parsed, assetFilenames, geminiModel);
+        contentMap = contentMapRaw;
+        const jsonMatch = contentMapRaw.match(/```(?:json)?\s*([\s\S]*?)```/);
+        if (jsonMatch) {
+            contentMap = jsonMatch[1].trim();
+        }
+        rawOutput = await generateWithClaude(contentMap, html, assetFilenames, claudeModel);
+    }
+
+    // Clean up markdown wrapping
+    let cleanHtml = rawOutput;
+    const htmlMatch = rawOutput.match(/```(?:html)?\s*([\s\S]*?)```/);
+    if (htmlMatch) {
+        cleanHtml = htmlMatch[1].trim();
+    }
+
+    return { generatedHtml: cleanHtml, contentMap };
+}
+</file>
+
+</files>
